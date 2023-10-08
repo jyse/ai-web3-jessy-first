@@ -28,7 +28,7 @@ import Image from "next/image";
 // };
 
 const styleGenImgsToAdd = {
-  borderRadius: "4px; "
+  borderRadius: "4px"
 };
 
 const AIArtPage = () => {
@@ -68,40 +68,83 @@ const AIArtPage = () => {
           </div>
 
           <div className={styles.recentGensContainer}>
-            <h2> Recent Generations</h2>
-            <div className={styles.recentPrompt}>
-              Astronaut girl with dark blue hair
+            <div className={styles.recentGenTitle}>
+              <h2> Recent Generations</h2>
             </div>
-            <RowGallery>
-              <Image
-                src="/gen-imgs-to-add/1.png"
-                width={250}
-                height={250}
-                alt="Art"
-                style={styleGenImgsToAdd}
-              />
-              <Image
-                src="/gen-imgs-to-add/2.png"
-                width={250}
-                height={250}
-                alt="Art"
-                style={styleGenImgsToAdd}
-              />
-              <Image
-                src="/gen-imgs-to-add/3.png"
-                width={250}
-                height={250}
-                alt="Art"
-                style={styleGenImgsToAdd}
-              />
-              <Image
-                src="/gen-imgs-to-add/4.png"
-                width={250}
-                height={250}
-                alt="Art"
-                style={styleGenImgsToAdd}
-              />
-            </RowGallery>
+            <div className={styles.recentPromptContainer}>
+              <div className={styles.recentPrompt}>
+                Futuristic astronaut girl with blue hair exploring Mars in the
+                future year of 2025
+              </div>
+              <RowGallery>
+                <Image
+                  src="/gen-imgs-to-add/1.png"
+                  width={250}
+                  height={250}
+                  alt="Art"
+                  style={styleGenImgsToAdd}
+                />
+                <Image
+                  src="/gen-imgs-to-add/2.png"
+                  width={250}
+                  height={250}
+                  alt="Art"
+                  style={styleGenImgsToAdd}
+                />
+                <Image
+                  src="/gen-imgs-to-add/3.png"
+                  width={250}
+                  height={250}
+                  alt="Art"
+                  style={styleGenImgsToAdd}
+                />
+                <Image
+                  src="/gen-imgs-to-add/4.png"
+                  width={250}
+                  height={250}
+                  alt="Art"
+                  style={styleGenImgsToAdd}
+                />
+              </RowGallery>
+            </div>
+            <div className={styles.recentPromptContainer}>
+              <div className={styles.recentPrompt}>
+                A dragon's lair in a cave near a blue ocean, with dragons
+                hoarding treasure, sleeping on piles of gold, and shooting fire
+                from their nostrils, mythical, detailed, adventurous,
+                fantastical
+              </div>
+              <RowGallery>
+                <Image
+                  src="/gen-imgs-to-add/5.png"
+                  width={250}
+                  height={250}
+                  alt="Art"
+                  style={styleGenImgsToAdd}
+                />
+                <Image
+                  src="/gen-imgs-to-add/6.png"
+                  width={250}
+                  height={250}
+                  alt="Art"
+                  style={styleGenImgsToAdd}
+                />
+                <Image
+                  src="/gen-imgs-to-add/7.png"
+                  width={250}
+                  height={250}
+                  alt="Art"
+                  style={styleGenImgsToAdd}
+                />
+                <Image
+                  src="/gen-imgs-to-add/8.png"
+                  width={250}
+                  height={250}
+                  alt="Art"
+                  style={styleGenImgsToAdd}
+                />
+              </RowGallery>
+            </div>
           </div>
         </div>
       </div>

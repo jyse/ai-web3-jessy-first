@@ -56,13 +56,13 @@
 .gridLayout {
   display: grid;
   grid-template-columns: 250px 1fr;
-  gap: 15px;
   height: 100vh;
 }
 
 .mainContainer {
   display: flex;
   justify-content: center;
+  padding: 67px 100px 20px 100px;
 }
 
 .welcomeContent {
@@ -128,7 +128,6 @@
 
 .styleBox {
   background-color: var(--background-secondary);
-
   width: 100%;
   border-radius: 4px;
   border: 1px solid var(--border-primary);
@@ -196,20 +195,19 @@
 }
 
 .aiGenContainer {
-  margin-top: 70px;
   width: fit-content;
 }
 
 .aiGenContent {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
 }
 
 .promptContainer {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
 }
 
 .promptInput form {
@@ -243,6 +241,7 @@
   background-color: #fff;
   border: none;
   border-radius: 4px;
+  margin-top: 5px;
 }
 
 .promptContainer button:hover {
@@ -261,19 +260,16 @@
 }
 
 .recentGensContainer {
+  background-color: var(--background-tertiary);
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  background-color: var(--background-secondary);
+  border-radius: 4px;
   -webkit-box-shadow: 0px 5px 14px 5px rgba(17, 17, 17, 0.63);
   box-shadow: 0px 5px 14px 5px rgba(17, 17, 17, 0.63);
-  border-radius: 4px;
-  padding: 15px;
 }
 
-.styles.genImg {
-  background-color: orangered;
-  width: 100px;
+.recentGenTitle {
+  padding: 15px 15px 10px 15px;
 }
 
 .rowGallery {
@@ -282,6 +278,21 @@
   gap: 10px;
 }
 
-.galleryImage {
-  object-fit: fill;
+.recentPrompt {
+  background-color: var(--background-quintiary);
+  min-height: 40px;
+  border-radius: 4px;
+  display: flex;
+  padding: 10px;
+}
+
+.recentPromptContainer {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.recentPromptContainer:hover {
+  background-color: var(--background-secondary);
 }

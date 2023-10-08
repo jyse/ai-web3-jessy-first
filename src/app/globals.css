@@ -1,13 +1,16 @@
 :root {
-  /* --max-width: 1100px; */
+  /* --max-width: 1100px; */ /* #191919 */
   --border-radius: 8px;
   --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
     "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
     "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+
   --background-primary: #111111;
-  --background-secondary: #191919;
+  --background-secondary: #1b1b1b;
   --background-tertiary: #151515;
   --background-quartiary: #ffffff;
+  --background-quintiary: #232323;
+
   --font-primary: #f7f7f8;
   --font-secondary: #635c5c;
   --font-tertiary: #1d1a1a;
