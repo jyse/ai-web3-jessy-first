@@ -64,7 +64,7 @@ export async function POST(request) {
   const writePromises = responseJSON.artifacts.map(async (image, index) => {
     let imageIndex = amountCurrentImages + index;
     await fs.promises.writeFile(
-      `./public/output/${imageIndex}.png`,
+      `./public/output/genImgs/${imageIndex}.png`,
       Buffer.from(image.base64, "base64")
     );
   });
