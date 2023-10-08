@@ -149,12 +149,6 @@
   border-bottom: 1px solid var(--border-primary);
 }
 
-.genImgsToAdd {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-}
-
 .aiGridLayout {
   display: grid;
   grid-template-columns: 400px 1fr;
@@ -203,21 +197,19 @@
 
 .aiGenContainer {
   margin-top: 70px;
-  width: 80%;
-  max-width: 1024px;
+  width: fit-content;
 }
 
 .aiGenContent {
   display: flex;
   flex-direction: column;
-  /* change this gap */
-  gap: 200px;
+  gap: 20px;
 }
 
 .promptContainer {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
 }
 
 .promptInput form {
@@ -264,5 +256,32 @@
 }
 
 .genImgsContainer {
-  background-color: mediumslateblue;
+  background-color: var(--background-tertiary);
+  height: 100vh;
+}
+
+.recentGensContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: var(--background-secondary);
+  -webkit-box-shadow: 0px 5px 14px 5px rgba(17, 17, 17, 0.63);
+  box-shadow: 0px 5px 14px 5px rgba(17, 17, 17, 0.63);
+  border-radius: 4px;
+  padding: 15px;
+}
+
+.styles.genImg {
+  background-color: orangered;
+  width: 100px;
+}
+
+.rowGallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.galleryImage {
+  object-fit: fill;
 }

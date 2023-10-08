@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import MainContainer from "../components/MainContainer";
 import styles from "../page.module.css";
+import RowGallery from "../components/RowGallery";
+import Image from "next/image";
 
 // ***************************
 //     AI Generator
@@ -24,6 +26,10 @@ import styles from "../page.module.css";
 //     });
 //   }
 // };
+
+const styleGenImgsToAdd = {
+  borderRadius: "4px; "
+};
 
 const AIArtPage = () => {
   const [prompt, setPrompt] = useState();
@@ -61,15 +67,41 @@ const AIArtPage = () => {
             </button>
           </div>
 
-          <div className={styles.genImgsContainer}>
-            <div className={styles.genImgsTitle}>
-              <h1>Recent Generations</h1>
+          <div className={styles.recentGensContainer}>
+            <h2> Recent Generations</h2>
+            <div className={styles.recentPrompt}>
+              Astronaut girl with dark blue hair
             </div>
-            <div className={styles.generatedImgs}>
-              <div className={styles.prompgGenImgs}>
-                Astronaut girl with dark blue hair
-              </div>
-            </div>
+            <RowGallery>
+              <Image
+                src="/gen-imgs-to-add/1.png"
+                width={250}
+                height={250}
+                alt="Art"
+                style={styleGenImgsToAdd}
+              />
+              <Image
+                src="/gen-imgs-to-add/2.png"
+                width={250}
+                height={250}
+                alt="Art"
+                style={styleGenImgsToAdd}
+              />
+              <Image
+                src="/gen-imgs-to-add/3.png"
+                width={250}
+                height={250}
+                alt="Art"
+                style={styleGenImgsToAdd}
+              />
+              <Image
+                src="/gen-imgs-to-add/4.png"
+                width={250}
+                height={250}
+                alt="Art"
+                style={styleGenImgsToAdd}
+              />
+            </RowGallery>
           </div>
         </div>
       </div>
