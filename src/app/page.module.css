@@ -195,6 +195,7 @@
 }
 
 .aiGenContainer {
+  min-width: 1024px;
   width: fit-content;
 }
 

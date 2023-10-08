@@ -1,17 +1,9 @@
-import { NextResponse } from "next/server";
 import fs from "fs";
-import {
-  getImgsFilePaths,
-  getAmountGenImages
-} from "../../../../services/images";
+import { readFile } from "fs/promises";
+import { join } from "path";
+import { getImgsFilePaths } from "../../../../services/images";
 
-/* *************************************************************************
-                                DreamStudio API
-**************************************************************************** */
-
-// wednesday 4 october: also add preset functionality in here
-// look up the sizes of the images
-
+// also add preset Style in here
 export async function POST(request) {
   const path =
     "https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/text-to-image";
@@ -23,6 +15,7 @@ export async function POST(request) {
   };
 
   const { prompt, style } = await request.json();
+  console.log(prompt, "what is in prompt here? 🌊");
 
   const body = {
     steps: 40,
@@ -61,15 +54,40 @@ export async function POST(request) {
   const currentImgsFilePaths = await getImgsFilePaths();
   const amountCurrentImages = currentImgsFilePaths.length + 1;
 
-  const writePromises = responseJSON.artifacts.map(async (image, index) => {
+  const writeImages = responseJSON.artifacts.map(async (image, index) => {
     let imageIndex = amountCurrentImages + index;
+    let imageFilePath = `./public/output/genImgs/${imageIndex}.png`;
+
     await fs.promises.writeFile(
-      `./public/output/genImgs/${imageIndex}.png`,
+      imageFilePath,
       Buffer.from(image.base64, "base64")
     );
   });
 
-  await Promise.all(writePromises);
+  let imageObject = {
+    tokenId: "",
+    prompt: prompt,
+    style: "Art",
+    bookmarked: false,
+    images: []
+  };
+
+  const writeJSON = responseJSON.artifacts.map(async (image, index) => {
+    let imageIndex = amountCurrentImages + index;
+    let imageFilePath = `/output/genImgs/${imageIndex}.png`;
+    imageObject.tokenId = image.seed;
+    imageObject.images.push(imageFilePath);
+  });
+
+  const jsonFilePath = join(process.cwd(), "public", "JSON", "genImgs.json");
+  const jsonContent = await readFile(jsonFilePath, "utf-8");
+  const jsonData = JSON.parse(jsonContent);
+
+  jsonData.push(imageObject);
+
+  fs.writeFileSync(jsonFilePath, JSON.stringify(jsonData));
+
+  await Promise.all(writeImages, writeJSON);
   const newImgsFilePaths = await getImgsFilePaths();
 
   return new Response(

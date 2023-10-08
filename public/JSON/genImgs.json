@@ -1,0 +1,50 @@
+[
+  {
+    "tokenId": "",
+    "prompt": "Astronaut girl with dark blue hair, illustration style",
+    "style": "Character",
+    "bookmarked": false,
+    "images": [
+      "/output/genImgs/1.png",
+      "/output/genImgs/2.png",
+      "/output/genImgs/3.png",
+      "/output/genImgs/4.png"
+    ]
+  },
+  {
+    "tokenId": "",
+    "prompt": "8k portrait inspired by Wassily Kandinsky's 'Abstract Art,' featuring geometric shapes, vibrant colors, and spiritual themes.",
+    "style": "Art",
+    "bookmarked": false,
+    "images": [
+      "/output/genImgs/5.png",
+      "/output/genImgs/6.png",
+      "/output/genImgs/7.png",
+      "/output/genImgs/8.png"
+    ]
+  },
+  {
+    "tokenId": "",
+    "prompt": "8k portrait of a dreamy pastel-colored sky, with fluffy clouds, soft gradients, and a sense of serenity.",
+    "style": "Stockphoto",
+    "bookmarked": false,
+    "images": [
+      "/output/genImgs/9.png",
+      "/output/genImgs/10.png",
+      "/output/genImgs/11.png",
+      "/output/genImgs/12.png"
+    ]
+  },
+  {
+    "tokenId": 600094122,
+    "prompt": "Retro comic style artwork, highly detailed Chewbacca from Star Wars, comic book cover, symmetrical, vibrant",
+    "style": "Art",
+    "bookmarked": false,
+    "images": [
+      "/output/genImgs/13.png",
+      "/output/genImgs/14.png",
+      "/output/genImgs/15.png",
+      "/output/genImgs/16.png"
+    ]
+  }
+]

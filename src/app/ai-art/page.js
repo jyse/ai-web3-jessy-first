@@ -9,7 +9,14 @@ import Image from "next/image";
 //     AI Generator
 // ***************************
 
-const getCurrentGenImages = async (prompt) => {
+const getCurrentJSON = async () => {
+  const response = await fetch("/api/json", {
+    method: "GET"
+  });
+  return response.json();
+};
+
+const getCurrentGenImages = async () => {
   const response = await fetch("/api/images", {
     method: "GET"
   });
@@ -21,6 +28,7 @@ const getNewImages = async (prompt) => {
     method: "POST",
     body: JSON.stringify({
       prompt: prompt
+      //Add style
     })
   });
 
@@ -34,21 +42,27 @@ const styleGenImgsToAdd = {
 const AIArtPage = () => {
   const [prompt, setPrompt] = useState();
   const [imageFPs, setImgFilePaths] = useState([]);
+  const [currentJSON, setCurrentJSON] = useState([]);
 
   async function onSubmit(e) {
     e.preventDefault();
     console.log("🤖Your prompt is: ", prompt);
     const imageFilePaths = await getNewImages(prompt);
     setImgFilePaths(imageFilePaths);
+    const currentJSONImgs = await getCurrentJSON();
+    setCurrentJSON(currentJSONImgs.data);
   }
 
   useEffect(() => {
     async function getImages() {
       const currentImgFPs = await getCurrentGenImages();
       setImgFilePaths(currentImgFPs);
+      const currentJSONImgs = await getCurrentJSON();
+      const jsonData = currentJSONImgs.data.reverse();
+      setCurrentJSON(jsonData);
     }
     getImages();
-  }, []);
+  }, [imageFPs]);
 
   return (
     <MainContainer>
@@ -72,85 +86,30 @@ const AIArtPage = () => {
               </div>
             </form>
           </div>
-
           <div className={styles.recentGensContainer}>
             <div className={styles.recentGenTitle}>
               <h2> Recent Generations</h2>
             </div>
-            <div className={styles.recentPromptContainer}>
-              <div className={styles.recentPrompt}>
-                Futuristic astronaut girl with blue hair exploring Mars in the
-                future year of 2025
-              </div>
-              <RowGallery>
-                <Image
-                  src="/gen-imgs-to-add/1.png"
-                  width={250}
-                  height={250}
-                  alt="Art"
-                  style={styleGenImgsToAdd}
-                />
-                <Image
-                  src="/gen-imgs-to-add/2.png"
-                  width={250}
-                  height={250}
-                  alt="Art"
-                  style={styleGenImgsToAdd}
-                />
-                <Image
-                  src="/gen-imgs-to-add/3.png"
-                  width={250}
-                  height={250}
-                  alt="Art"
-                  style={styleGenImgsToAdd}
-                />
-                <Image
-                  src="/gen-imgs-to-add/4.png"
-                  width={250}
-                  height={250}
-                  alt="Art"
-                  style={styleGenImgsToAdd}
-                />
-              </RowGallery>
-            </div>
-            <div className={styles.recentPromptContainer}>
-              <div className={styles.recentPrompt}>
-                A dragon's lair in a cave near a blue ocean, with dragons
-                hoarding treasure, sleeping on piles of gold, and shooting fire
-                from their nostrils, mythical, detailed, adventurous,
-                fantastical
-              </div>
-              <RowGallery>
-                <Image
-                  src="/gen-imgs-to-add/5.png"
-                  width={250}
-                  height={250}
-                  alt="Art"
-                  style={styleGenImgsToAdd}
-                />
-                <Image
-                  src="/gen-imgs-to-add/6.png"
-                  width={250}
-                  height={250}
-                  alt="Art"
-                  style={styleGenImgsToAdd}
-                />
-                <Image
-                  src="/gen-imgs-to-add/7.png"
-                  width={250}
-                  height={250}
-                  alt="Art"
-                  style={styleGenImgsToAdd}
-                />
-                <Image
-                  src="/gen-imgs-to-add/8.png"
-                  width={250}
-                  height={250}
-                  alt="Art"
-                  style={styleGenImgsToAdd}
-                />
-              </RowGallery>
-            </div>
+            {currentJSON?.map((item, index) => {
+              return (
+                <div className={styles.recentPromptContainer} key={index}>
+                  <div className={styles.recentPrompt}>{item.prompt}</div>
+                  <RowGallery>
+                    {item.images.map((imgFp, imageIndex) => (
+                      <Image
+                        priority={true}
+                        key={imageIndex}
+                        src={imgFp}
+                        width={250}
+                        height={250}
+                        alt={"Text"}
+                        style={styleGenImgsToAdd}
+                      />
+                    ))}
+                  </RowGallery>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

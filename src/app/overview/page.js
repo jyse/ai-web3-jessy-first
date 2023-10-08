@@ -48,18 +48,21 @@ const OverviewPage = () => {
                         height={85}
                         alt="Character"
                         style={firstImageAIStyle}
+                        priority={true}
                       />
                       <Image
                         src="/ai-styles/stockphotos/2.png"
                         width={85}
                         height={85}
                         alt="Character"
+                        priority={true}
                       />
                       <Image
                         src="/ai-styles/stockphotos/3.png"
                         width={85}
                         height={85}
                         alt="Character"
+                        priority={true}
                       />
                       <Image
                         src="/ai-styles/stockphotos/4.png"
@@ -67,6 +70,7 @@ const OverviewPage = () => {
                         height={85}
                         alt="Character"
                         style={lastImageAIStyle}
+                        priority={true}
                       />
                     </div>
                   </Link>
@@ -84,18 +88,21 @@ const OverviewPage = () => {
                         height={85}
                         alt="Characters"
                         style={firstImageAIStyle}
+                        priority={true}
                       />
                       <Image
                         src="/ai-styles/characters/2.png"
                         width={85}
                         height={85}
                         alt="Characters"
+                        priority={true}
                       />
                       <Image
                         src="/ai-styles/characters/3.png"
                         width={85}
                         height={85}
                         alt="Characters"
+                        priority={true}
                       />
                       <Image
                         src="/ai-styles/characters/4.png"
@@ -103,6 +110,7 @@ const OverviewPage = () => {
                         height={85}
                         alt="Characters"
                         style={lastImageAIStyle}
+                        priority={true}
                       />
                     </div>
                   </Link>
@@ -119,18 +127,21 @@ const OverviewPage = () => {
                         height={85}
                         alt="Wallpaper"
                         style={firstImageAIStyle}
+                        priority={true}
                       />
                       <Image
                         src="/ai-styles/wallpapers/2.png"
                         width={85}
                         height={85}
                         alt="Wallpaper"
+                        priority={true}
                       />
                       <Image
                         src="/ai-styles/wallpapers/3.png"
                         width={85}
                         height={85}
                         alt="Wallpaper"
+                        priority={true}
                       />
                       <Image
                         src="/ai-styles/wallpapers/4.png"
@@ -138,6 +149,7 @@ const OverviewPage = () => {
                         height={85}
                         alt="Wallpaper"
                         style={lastImageAIStyle}
+                        priority={true}
                       />
                     </div>
                   </Link>
@@ -154,18 +166,21 @@ const OverviewPage = () => {
                         height={85}
                         alt="logo"
                         style={firstImageAIStyle}
+                        priority={true}
                       />
                       <Image
                         src="/ai-styles/logos/2.png"
                         width={85}
                         height={85}
                         alt="logo"
+                        priority={true}
                       />
                       <Image
                         src="/ai-styles/logos/3.png"
                         width={85}
                         height={85}
                         alt="logo"
+                        priority={true}
                       />
                       <Image
                         src="/ai-styles/logos/4.png"
@@ -173,6 +188,7 @@ const OverviewPage = () => {
                         height={85}
                         alt="logo"
                         style={lastImageAIStyle}
+                        priority={true}
                       />
                     </div>
                   </Link>
@@ -189,18 +205,21 @@ const OverviewPage = () => {
                         height={85}
                         alt="Character"
                         style={firstImageAIStyle}
+                        priority={true}
                       />
                       <Image
                         src="/ai-styles/art/2.png"
                         width={85}
                         height={85}
                         alt="Character"
+                        priority={true}
                       />
                       <Image
                         src="/ai-styles/art/3.png"
                         width={85}
                         height={85}
                         alt="Character"
+                        priority={true}
                       />
                       <Image
                         src="/ai-styles/art/4.png"
@@ -208,6 +227,7 @@ const OverviewPage = () => {
                         height={85}
                         alt="Character"
                         style={lastImageAIStyle}
+                        priority={true}
                       />
                     </div>
                   </Link>
@@ -232,6 +252,7 @@ const OverviewPage = () => {
                   height={250}
                   alt="Character"
                   style={styleGenImgsToAdd}
+                  priority={true}
                 />
                 <Image
                   src="/gen-imgs-to-add/2.png"
@@ -239,6 +260,7 @@ const OverviewPage = () => {
                   height={250}
                   alt="Character"
                   style={styleGenImgsToAdd}
+                  priority={true}
                 />
                 <Image
                   src="/gen-imgs-to-add/3.png"
@@ -246,6 +268,7 @@ const OverviewPage = () => {
                   height={250}
                   alt="Character"
                   style={styleGenImgsToAdd}
+                  priority={true}
                 />
                 <Image
                   src="/gen-imgs-to-add/4.png"
@@ -253,6 +276,7 @@ const OverviewPage = () => {
                   height={250}
                   alt="Character"
                   style={styleGenImgsToAdd}
+                  priority={true}
                 />
               </RowGallery>
             </div>

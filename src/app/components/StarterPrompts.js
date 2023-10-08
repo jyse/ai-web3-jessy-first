@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import styles from "../page.module.css";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,6 +10,17 @@ const styleStarterPromptImg = {
 };
 
 const StarterPrompts = ({ style }) => {
+  const [JSONSps, setCurrentJSONSPs] = useState([]);
+  useEffect(() => {
+    async function getSPJSON() {
+      const currentImgFPs = await getCurrentGenImages();
+      setImgFilePaths(currentImgFPs);
+      const currentJSONImgs = await getCurrentJSON();
+      const jsonData = currentJSONImgs.data.reverse();
+      setCurrentJSONSPs(jsonData);
+    }
+    getSPJSON();
+  }, [JSONSps]);
   return (
     <div className={styles.spContainer}>
       <Link href="/">

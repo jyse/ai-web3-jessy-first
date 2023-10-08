@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const generatedImagesPath = path.resolve("./public/output/");
+const generatedImagesPath = path.resolve("./public/output/genImgs/");
 
 export const getImgsFilePaths = async () => {
   return new Promise((resolve, reject) => {
