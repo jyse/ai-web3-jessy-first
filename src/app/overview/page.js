@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../page.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import MainContainer from "../components/MainContainer";
 
 const lastImageAIStyle = {
   borderBottomRightRadius: "4px"
@@ -12,12 +13,12 @@ const firstImageAIStyle = {
 };
 
 const styleGenImgsToAdd = {
-  borderRadius: "4px; "
+  borderRadius: "4px"
 };
 
-const Welcome = () => {
+const OverviewPage = () => {
   return (
-    <div className={styles.mainContainer}>
+    <MainContainer>
       <div className={styles.welcomeContent}>
         <div className={styles.welcomeText}>
           <h1>Welcome at ArtIVerse Studio!🎨🔥</h1>
@@ -41,26 +42,26 @@ const Welcome = () => {
                     </div>
                     <div className={styles.rowAIStyles}>
                       <Image
-                        src="/ai-styles/stockphotos/1.png"
+                        src="/ai-art/stockphotos/1.png"
                         width={85}
                         height={85}
                         alt="Character"
                         style={firstImageAIStyle}
                       />
                       <Image
-                        src="/ai-styles/stockphotos/2.png"
+                        src="/ai-art/stockphotos/2.png"
                         width={85}
                         height={85}
                         alt="Character"
                       />
                       <Image
-                        src="/ai-styles/stockphotos/3.png"
+                        src="/ai-art/stockphotos/3.png"
                         width={85}
                         height={85}
                         alt="Character"
                       />
                       <Image
-                        src="/ai-styles/stockphotos/4.png"
+                        src="/ai-art/stockphotos/4.png"
                         width={85}
                         height={85}
                         alt="Character"
@@ -77,26 +78,26 @@ const Welcome = () => {
                     </div>
                     <div className={styles.rowAIStyles}>
                       <Image
-                        src="/ai-styles/characters/1.png"
+                        src="/ai-art/characters/1.png"
                         width={85}
                         height={85}
                         alt="Characters"
                         style={firstImageAIStyle}
                       />
                       <Image
-                        src="/ai-styles/characters/2.png"
+                        src="/ai-art/characters/2.png"
                         width={85}
                         height={85}
                         alt="Characters"
                       />
                       <Image
-                        src="/ai-styles/characters/3.png"
+                        src="/ai-art/characters/3.png"
                         width={85}
                         height={85}
                         alt="Characters"
                       />
                       <Image
-                        src="/ai-styles/characters/4.png"
+                        src="/ai-art/characters/4.png"
                         width={85}
                         height={85}
                         alt="Characters"
@@ -112,26 +113,26 @@ const Welcome = () => {
                     </div>
                     <div className={styles.rowAIStyles}>
                       <Image
-                        src="/ai-styles/wallpapers/1.png"
+                        src="/ai-art/wallpapers/1.png"
                         width={85}
                         height={85}
                         alt="Wallpaper"
                         style={firstImageAIStyle}
                       />
                       <Image
-                        src="/ai-styles/wallpapers/2.png"
+                        src="/ai-art/wallpapers/2.png"
                         width={85}
                         height={85}
                         alt="Wallpaper"
                       />
                       <Image
-                        src="/ai-styles/wallpapers/3.png"
+                        src="/ai-art/wallpapers/3.png"
                         width={85}
                         height={85}
                         alt="Wallpaper"
                       />
                       <Image
-                        src="/ai-styles/wallpapers/4.png"
+                        src="/ai-art/wallpapers/4.png"
                         width={85}
                         height={85}
                         alt="Wallpaper"
@@ -147,26 +148,26 @@ const Welcome = () => {
                     </div>
                     <div className={styles.rowAIStyles}>
                       <Image
-                        src="/ai-styles/logos/1.png"
+                        src="/ai-art/logos/1.png"
                         width={85}
                         height={85}
                         alt="logo"
                         style={firstImageAIStyle}
                       />
                       <Image
-                        src="/ai-styles/logos/2.png"
+                        src="/ai-art/logos/2.png"
                         width={85}
                         height={85}
                         alt="logo"
                       />
                       <Image
-                        src="/ai-styles/logos/3.png"
+                        src="/ai-art/logos/3.png"
                         width={85}
                         height={85}
                         alt="logo"
                       />
                       <Image
-                        src="/ai-styles/logos/4.png"
+                        src="/ai-art/logos/4.png"
                         width={85}
                         height={85}
                         alt="logo"
@@ -182,26 +183,26 @@ const Welcome = () => {
                     </div>
                     <div className={styles.rowAIStyles}>
                       <Image
-                        src="/ai-styles/art/1.png"
+                        src="/ai-art/art/1.png"
                         width={85}
                         height={85}
                         alt="Character"
                         style={firstImageAIStyle}
                       />
                       <Image
-                        src="/ai-styles/art/2.png"
+                        src="/ai-art/art/2.png"
                         width={85}
                         height={85}
                         alt="Character"
                       />
                       <Image
-                        src="/ai-styles/art/3.png"
+                        src="/ai-art/art/3.png"
                         width={85}
                         height={85}
                         alt="Character"
                       />
                       <Image
-                        src="/ai-styles/art/4.png"
+                        src="/ai-art/art/4.png"
                         width={85}
                         height={85}
                         alt="Character"
@@ -271,8 +272,8 @@ const Welcome = () => {
           </div>
         </div>
       </div>
-    </div>
+    </MainContainer>
   );
 };
 
-export default Welcome;
+export default OverviewPage;

@@ -7,9 +7,11 @@
   --background-primary: #111111;
   --background-secondary: #191919;
   --background-tertiary: #151515;
+  --background-quartiary: #ffffff;
   --font-primary: #f7f7f8;
-  --font-secondary: #635d5d;
-  --hover-primary: #222;
+  --font-secondary: #635c5c;
+  --font-tertiary: #1d1a1a;
+  --hover-primary: #2c2b2b;
   --highlight-primary: #8390fa;
   --highlight-secondary: #73eedc;
   --hightlight-tertiary: #f2ff49;

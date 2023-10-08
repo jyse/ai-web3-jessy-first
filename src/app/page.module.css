@@ -155,7 +155,7 @@
   gap: 10px;
 }
 
-.AIGridLayout {
+.aiGridLayout {
   display: grid;
   grid-template-columns: 400px 1fr;
   gap: 15px;
@@ -199,4 +199,70 @@
   margin-bottom: 5px;
   color: var(--font-secondary);
   font-weight: 600;
+}
+
+.aiGenContainer {
+  margin-top: 70px;
+  width: 80%;
+  max-width: 1024px;
+}
+
+.aiGenContent {
+  display: flex;
+  flex-direction: column;
+  /* change this gap */
+  gap: 200px;
+}
+
+.promptContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.promptInput form {
+  display: flex;
+  min-height: 120px;
+}
+
+.promptInput textarea {
+  width: 100%;
+  background-color: var(--background-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: 4px;
+  min-height: 150px;
+  padding: 15px;
+  resize: none;
+  color: var(--font-primary);
+  font-size: 16px;
+}
+
+.promptInput textarea::placeholder {
+  font-size: 16px;
+  color: var(--font-secondary);
+}
+
+.promptInput textarea:focus {
+  outline: 1px solid var(--highlight-primary);
+}
+
+.promptContainer button {
+  padding: 10px;
+  background-color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+
+.promptContainer button:hover {
+  background-color: var(--highlight-primary);
+}
+
+.buttonText {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--font-tertiary);
+}
+
+.genImgsContainer {
+  background-color: mediumslateblue;
 }
