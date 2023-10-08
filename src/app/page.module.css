@@ -198,4 +198,5 @@
 .spText {
   margin-bottom: 5px;
   color: var(--font-secondary);
+  font-weight: 600;
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../page.module.css";
 import Image from "next/image";
+import Link from "next/link";
 
 const styleStarterPromptImg = {
   borderRadius: "4px",
@@ -10,7 +11,10 @@ const styleStarterPromptImg = {
 const StarterPrompts = ({ style }) => {
   return (
     <div className={styles.spContainer}>
-      <div className={styles.goBackButton}>👈 Go back</div>
+      <Link href="/">
+        <div className={styles.goBackButton}>👈 Go back</div>
+      </Link>
+
       <div className={styles.starterPrompts}>
         <div className={styles.spText}>
           <h3>Choose Starter Prompt</h3>
