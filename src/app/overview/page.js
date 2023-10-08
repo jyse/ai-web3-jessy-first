@@ -14,7 +14,7 @@ const firstImageAIStyle = {
 };
 
 const styleGenImgsToAdd = {
-  borderRadius: "4px; "
+  borderRadius: "4px"
 };
 
 const OverviewPage = () => {
@@ -224,6 +224,7 @@ const OverviewPage = () => {
               </div>
             </div>
             <div className={styles.stepContent}>
+              {/* //comment: work on the spacing here at the last image */}
               <RowGallery>
                 <Image
                   src="/gen-imgs-to-add/1.png"
@@ -233,21 +234,21 @@ const OverviewPage = () => {
                   style={styleGenImgsToAdd}
                 />
                 <Image
-                  src="/gen-imgs-to-add/1.png"
+                  src="/gen-imgs-to-add/2.png"
                   width={250}
                   height={250}
                   alt="Character"
                   style={styleGenImgsToAdd}
                 />
                 <Image
-                  src="/gen-imgs-to-add/1.png"
+                  src="/gen-imgs-to-add/3.png"
                   width={250}
                   height={250}
                   alt="Character"
                   style={styleGenImgsToAdd}
                 />
                 <Image
-                  src="/gen-imgs-to-add/1.png"
+                  src="/gen-imgs-to-add/4.png"
                   width={250}
                   height={250}
                   alt="Character"

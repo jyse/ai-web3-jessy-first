@@ -62,7 +62,7 @@
 .mainContainer {
   display: flex;
   justify-content: center;
-  padding: 67px 100px 20px 100px;
+  padding: 65px 100px 20px 100px;
 }
 
 .welcomeContent {
@@ -203,7 +203,6 @@
   flex-direction: column;
   gap: 30px;
 }
-
 .promptContainer {
   display: flex;
   flex-direction: column;
@@ -236,15 +235,16 @@
   outline: 1px solid var(--highlight-primary);
 }
 
-.promptContainer button {
+.promptInput button {
   padding: 10px;
   background-color: #fff;
   border: none;
   border-radius: 4px;
   margin-top: 5px;
+  width: 100%;
 }
 
-.promptContainer button:hover {
+.promptInput button:hover {
   background-color: var(--highlight-primary);
 }
 
