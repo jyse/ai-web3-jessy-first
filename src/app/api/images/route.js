@@ -2,6 +2,7 @@ import fs from "fs";
 import { readFile } from "fs/promises";
 import { join } from "path";
 import { getImgsFilePaths } from "../../../../services/images";
+import { current } from "@reduxjs/toolkit";
 
 // also add preset Style in here
 export async function POST(request) {
@@ -11,7 +12,7 @@ export async function POST(request) {
   const headers = {
     Accept: "application/json",
     Authorization: "Bearer sk-FXFbM5LnYaDjT0Gl89xi1qo3Bx8RvnDKiBXpQQzG58mQleKA",
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
   };
 
   const { prompt, style } = await request.json();
@@ -28,19 +29,19 @@ export async function POST(request) {
     text_prompts: [
       {
         text: prompt,
-        weight: 1
+        weight: 1,
       },
       {
         text: "(deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime:1.4), text, close up, cropped, out of frame, worst quality, low quality, jpeg artifacts, ugly, duplicate, morbid, mutilated, extra fingers, mutated hands, poorly drawn hands, poorly drawn face, mutation, deformed, blurry, dehydrated, bad anatomy, bad proportions, extra limbs, cloned face, disfigured, gross proportions, malformed limbs, missing arms, missing legs, extra arms, extra legs, fused fingers, too many fingers, long neck",
-        weight: -1
-      }
-    ]
+        weight: -1,
+      },
+    ],
   };
 
   const response = await fetch(path, {
     headers,
     method: "POST",
-    body: JSON.stringify(body)
+    body: JSON.stringify(body),
   });
 
   if (!response.ok) {
@@ -69,7 +70,7 @@ export async function POST(request) {
     prompt: prompt,
     style: "Art",
     bookmarked: false,
-    images: []
+    images: [],
   };
 
   const writeJSON = responseJSON.artifacts.map(async (image, index) => {
@@ -93,7 +94,7 @@ export async function POST(request) {
   return new Response(
     JSON.stringify({
       message: "🔥🚀 Filepaths with the BRAND NEW generated Images!✨",
-      filePaths: newImgsFilePaths
+      filePaths: newImgsFilePaths,
     })
   );
 }
@@ -104,7 +105,7 @@ export async function GET(request) {
   return new Response(
     JSON.stringify({
       message: "🤖✨ Image file paths you have generated so far!",
-      filePaths: currentImgsFilePaths
+      filePaths: currentImgsFilePaths,
     })
   );
 }
