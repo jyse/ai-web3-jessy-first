@@ -1,38 +1,62 @@
 [
   {
-    "style": "Character",
-    "prompt": "Astronaut girl with dark blue hair, illustration style",
-    "image": 
-      "/output/genImgs/1.png"      
+    "prompt": "A dragon's lair in a cave near a blue ocean, with dragons hoarding treasure, sleeping on piles of gold, and shooting fire from their nostrils, mythical, detailed, adventurous, fantastical",
+    "style": "art",
+    "imageFile": "/spImgs/art/1.png"
   },
   {
-    "style": "Art",
+    "prompt": "futuristic sunset New York City skyline landscape vista photography by Carr Clifton & Galen Rowell, 16K resolution, Landscape veduta photo by Dustin Lefevre & tdraw, 8k resolution, detailed landscape painting by Ivan Shishkin, DeviantArt, Flickr, rendered in Enscape, Miyazaki, Nausicaa Ghibli, Breath of The Wild, 4k detailed post processing, atmospheric, hyper realistic, 8k, epic composition, cinematic, artstation —ar 16:9",
+    "style": "art",
+    "imageFile": "/spImgs/art/2.png"
+  },
+  {
+    "prompt": "Retro comic style artwork, highly detailed spiderman, comic book cover, symmetrical, vibrant",
+    "style": "art",
+    "imageFile": "/spImgs/art/3.png"
+  },
+  {
+    "prompt": "8k portrait in the style of Pablo Picasso's 'Cubism,' with fragmented geometric forms, abstracted figures, and bold colors.",
+    "style": "art",
+    "imageFile": "/spImgs/art/4.png"
+  },
+  {
     "prompt": "8k portrait inspired by Wassily Kandinsky's 'Abstract Art,' featuring geometric shapes, vibrant colors, and spiritual themes.",
-    "images": 
-      "/output/genImgs/5.png",
-      "/output/genImgs/6.png",
-      "/output/genImgs/7.png",
-      "/output/genImgs/8.png"
-    
+    "style": "art",
+    "imageFile": "/spImgs/art/5.png"
   },
   {
-    "style": "Stockphoto",
-    "prompt": "8k portrait of a dreamy pastel-colored sky, with fluffy clouds, soft gradients, and a sense of serenity.",
-    "images": [
-      "/output/genImgs/9.png",
-      "/output/genImgs/10.png",
-      "/output/genImgs/11.png",
-      "/output/genImgs/12.png"
-    
+    "prompt": "8k portrait in the style of Henri Matisse's 'Fauvism,' with bold colors, simplified forms, and expressive brushwork.",
+    "style": "art",
+    "imageFile": "/spImgs/art/6.png"
   },
   {
-    "style": "Art",
-    "prompt": "Retro comic style artwork, highly detailed Chewbacca from Star Wars, comic book cover, symmetrical, vibrant",
-    "images": [
-      "/output/genImgs/13.png",
-      "/output/genImgs/14.png",
-      "/output/genImgs/15.png",
-      "/output/genImgs/16.png"
-    
+    "prompt": "8k portrait of A tranquil and idyllic countryside scene, with a meandering river, grazing cows, and colorful wildflowers.",
+    "style": "art",
+    "imageFile": "/spImgs/art/7.png"
+  },
+  {
+    "prompt": "8k portrait in the style of Jackson Pollock's 'Abstract Expressionism,' featuring drips, splatters, and energetic brushwork.",
+    "style": "art",
+    "imageFile": "/spImgs/art/8.png"
+  },
+  {
+    "prompt": "futuristic tree house, hyper realistic, epic composition, cinematic, landscape vista photography by Carr Clifton & Galen Rowell, Landscape veduta photo by Dustin Lefevre & tdraw, detailed landscape painting by Ivan Shishkin, rendered in Enscape, Miyazaki, Nausicaa Ghibli, 4k detailed post processing, unreal engine",
+    "style": "art",
+    "imageFile": "/spImgs/art/9.png"
+  },
+  {
+    "prompt": "Landscape veduta photo by Dan Mumford, detailed landscape painting, rendered in Enscape, Miyazaki, Nausicaa Ghibli, 4k detailed post processing, unreal engine",
+    "style": "art",
+    "imageFile": "/spImgs/art/10.png"
+  },
+  {
+    "prompt": "galaxy full of colors, vibrant, epic composition, cinematic",
+    "style": "art",
+    "imageFile": "/spImgs/art/11.png"
+  },
+  {
+    "prompt": "8k portrait influenced by Frida Kahlo's 'Surrealism,' with symbolic elements, vibrant colors, and introspective themes.",
+    "style": "art",
+    "imageFile": "/spImgs/art/12.png"
   }
 ]
