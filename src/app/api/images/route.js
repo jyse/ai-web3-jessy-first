@@ -15,7 +15,7 @@ export async function POST(request) {
   };
 
   const { prompt, style } = await request.json();
-  console.log(prompt, "what is in prompt here? 🌊");
+  console.log("🔥🚀🎨 Sending prompt to DreamStudio API");
 
   const body = {
     steps: 40,

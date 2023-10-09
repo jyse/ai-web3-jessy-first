@@ -9,120 +9,61 @@ const styleStarterPromptImg = {
   alignSelf: "center"
 };
 
-const getCurrentJSON = async () => {
-  const response = await fetch("/api/json", {
+const getPromptImg = () => {
+  console.log(" TEST 🐲 putting prompt inside input");
+};
+
+const getSPJSON = async () => {
+  const response = await fetch("/api/sp-json", {
     method: "GET"
   });
   return response.json();
 };
 
-const getCurrentGenImages = async () => {
-  const response = await fetch("/api/images", {
-    method: "GET"
-  });
-  return response.json();
-};
-
-const getNewImages = async (prompt) => {
-  const response = await fetch("/api/images", {
-    method: "POST",
-    body: JSON.stringify({
-      prompt: prompt
-      //Add style
-    })
-  });
-
-  return response.json();
+const filterObjectsByStyle = (arrayOfObjects, style) => {
+  return arrayOfObjects.filter((obj) => obj.style == style);
 };
 
 const StarterPrompts = ({ style }) => {
-  const [prompt, setPrompt] = useState();
-  const [imageFPs, setImgFilePaths] = useState([]);
-  const [currentJSON, setCurrentJSON] = useState([]);
+  const [spJSONObjects, setSPJSON] = useState([]);
 
   useEffect(() => {
     async function getSPImages() {
-      // const jsonFile = await writeSPJson();
-      // const currentImgFPs = await getCurrentGenImages();
-      // setImgFilePaths(currentImgFPs);
-      // const currentJSONImgs = await getCurrentJSON();
-      // const jsonData = currentJSONImgs.data.reverse();
-      // setCurrentJSON(jsonData);
+      const spJSON = await getSPJSON();
+      const filteredSPObjects = await filterObjectsByStyle(spJSON.data, "art");
+      setSPJSON(filteredSPObjects);
     }
     getSPImages();
-  }, [imageFPs]);
+  }, []);
 
   return (
     <div className={styles.spContainer}>
       <Link href="/">
         <div className={styles.goBackButton}>👈 Go back</div>
       </Link>
-
       <div className={styles.starterPrompts}>
         <div className={styles.spText}>
           <h3>Choose Starter Prompt</h3>
         </div>
         <div className={styles.spGrid}>
-          <div className={styles.imgItem}>
-            <Image
-              width={175}
-              height={175}
-              key={1}
-              src={"/ai-art/stockphotos/1.png"}
-              alt={`Starter Prompt`}
-              style={styleStarterPromptImg}
-            />
-          </div>
-          <div className={styles.imgItem}>
-            <Image
-              width={175}
-              height={175}
-              key={1}
-              src={"/ai-art/stockphotos/1.png"}
-              alt={`Starter Prompt`}
-              style={styleStarterPromptImg}
-            />
-          </div>
-          <div className={styles.imgItem}>
-            <Image
-              width={175}
-              height={175}
-              key={1}
-              src={"/ai-art/stockphotos/1.png"}
-              alt={`Starter Prompt`}
-              style={styleStarterPromptImg}
-            />
-          </div>
-          <div className={styles.imgItem}>
-            <Image
-              width={175}
-              height={175}
-              key={1}
-              src={"/ai-art/stockphotos/1.png"}
-              alt={`Starter Prompt`}
-              style={styleStarterPromptImg}
-            />
-          </div>
-          <div className={styles.imgItem}>
-            <Image
-              width={175}
-              height={175}
-              key={1}
-              src={"/ai-art/stockphotos/1.png"}
-              alt={`Starter Prompt`}
-              style={styleStarterPromptImg}
-            />
-          </div>
-          <div className={styles.imgItem}>
-            <Image
-              width={175}
-              height={175}
-              key={1}
-              src={"/ai-art/stockphotos/1.png"}
-              alt={`Starter Prompt`}
-              style={styleStarterPromptImg}
-            />
-          </div>
+          {spJSONObjects?.map((spObject, index) => {
+            return (
+              <div
+                className={styles.imgItem}
+                onClick={() => getPromptImg(spObject.prompt)}
+                key={index}
+              >
+                <Image
+                  width={175}
+                  height={175}
+                  key={1}
+                  src={spObject.imageFile}
+                  alt={"Starter Prompt"}
+                  style={styleStarterPromptImg}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

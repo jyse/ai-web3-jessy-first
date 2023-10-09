@@ -41,9 +41,13 @@ const styleGenImgsToAdd = {
 };
 
 const AIArtPage = () => {
-  const [prompt, setPrompt] = useState();
+  const [prompt, setPrompt] = useState("");
   const [imageFPs, setImgFilePaths] = useState([]);
   const [currentJSON, setCurrentJSON] = useState([]);
+
+  const handleClearClick = () => {
+    setPrompt("");
+  };
 
   async function onSubmit(e) {
     e.preventDefault();
@@ -72,8 +76,14 @@ const AIArtPage = () => {
       <div className={styles.aiGenContainer}>
         <div className={styles.aiGenContent}>
           <div className={styles.promptContainer}>
-            <div className={styles.promptTitle}>
+            <div className={styles.promptIntro}>
               <h3>Prompt</h3>
+              <button
+                className={styles.clear}
+                onClick={() => handleClearClick()}
+              >
+                <h3>Clear</h3>
+              </button>
             </div>
             <form onSubmit={onSubmit}>
               <div className={styles.promptInput}>
@@ -81,6 +91,7 @@ const AIArtPage = () => {
                   className="input"
                   type="text"
                   placeholder="Describe the image you want to generate"
+                  value={prompt}
                   onChange={(e) => setPrompt(e.target.value)}
                 />
                 <button className="button" type="submit">

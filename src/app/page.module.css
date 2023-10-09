@@ -177,12 +177,7 @@
   grid-template-columns: 1fr 1fr;
   justify-items: center;
   align-items: center;
-  gap: 10px;
-}
-
-.imgItem {
-  justify-self: center;
-  align-self: center;
+  gap: 15px;
 }
 
 .goBackButton {
@@ -219,9 +214,27 @@
   gap: 5px;
 }
 
+.promptIntro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 20px;
+
+  color: var(--font-secondary);
+}
+
+.promptIntro button {
+  background-color: transparent;
+  all: unset;
+}
+
+.promptIntro button:hover {
+  color: #fff;
+}
+
 .promptInput form {
   display: flex;
-  min-height: 120px;
+  min-height: 15px;
 }
 
 .promptInput textarea {
