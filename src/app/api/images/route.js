@@ -64,6 +64,8 @@ export async function POST(request) {
     );
   });
 
+  console.log("📝 Writing 🎨 AI art to the folder");
+
   let imageObject = {
     tokenId: "",
     prompt: prompt,

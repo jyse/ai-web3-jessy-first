@@ -24,6 +24,7 @@ const getCurrentGenImages = async () => {
 };
 
 const getNewImages = async (prompt) => {
+  console.log("🎨🤖 Generating your images...");
   const response = await fetch("/api/images", {
     method: "POST",
     body: JSON.stringify({
@@ -49,8 +50,10 @@ const AIArtPage = () => {
     console.log("🤖Your prompt is: ", prompt);
     const imageFilePaths = await getNewImages(prompt);
     setImgFilePaths(imageFilePaths);
+    console.log("🤖🎨 The generated images have been written!");
     const currentJSONImgs = await getCurrentJSON();
-    setCurrentJSON(currentJSONImgs.data);
+    console.log("🚀📝Getting JSON data");
+    setCurrentJSON(currentJSONImgs.data.reverse());
   }
 
   useEffect(() => {
