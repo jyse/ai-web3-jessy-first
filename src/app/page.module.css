@@ -68,7 +68,12 @@
   max-width: 1150px;
 }
 
-.welcomeContent {
+.overviewContainer {
+  min-width: 1024px;
+  width: fit-content;
+}
+
+.overviewContent {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -88,8 +93,9 @@
 }
 
 .step {
+  display: flex;
+  flex-direction: column;
   background-color: var(--background-tertiary);
-  gap: 20px;
   -webkit-box-shadow: 0px 5px 14px 5px rgba(17, 17, 17, 0.63);
   box-shadow: 0px 5px 14px 5px rgba(17, 17, 17, 0.63);
   border-radius: 4px;
@@ -98,8 +104,13 @@
 .stepIntro {
   display: flex;
   align-items: center;
-  width: 100%;
   padding: 15px;
+}
+
+.stepIntro:hover {
+  background-color: var(--hover-primary);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
 
 .title {
@@ -110,17 +121,11 @@
   font-size: 36px;
 }
 
-.stepIntro:hover {
-  background-color: var(--hover-primary);
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-}
-
 .stepContent {
-  padding: 15px;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   display: flex;
+  padding: 15px;
 }
 
 .gridAiStyles {
@@ -277,6 +282,17 @@
   padding: 15px 15px 10px 15px;
 }
 
+.recentPromptContainer {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.recentPromptContainer:hover {
+  background-color: var(--background-secondary);
+}
+
 .rowGallery {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -289,15 +305,4 @@
   border-radius: 4px;
   display: flex;
   padding: 10px;
-}
-
-.recentPromptContainer {
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.recentPromptContainer:hover {
-  background-color: var(--background-secondary);
 }
