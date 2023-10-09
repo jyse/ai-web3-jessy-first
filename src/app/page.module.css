@@ -62,7 +62,10 @@
 .mainContainer {
   display: flex;
   justify-content: center;
-  padding: 65px 100px 20px 100px;
+  margin: 65px auto 20px auto;
+  padding-left: 40px;
+  padding-right: 40px;
+  max-width: 1150px;
 }
 
 .welcomeContent {
@@ -196,7 +199,7 @@
 }
 
 .aiGenContainer {
-  max-width: 1440px;
+  min-width: 1024px;
   width: fit-content;
 }
 

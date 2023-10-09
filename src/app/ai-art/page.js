@@ -62,7 +62,7 @@ const AIArtPage = () => {
       setCurrentJSON(jsonData);
     }
     getImages();
-  }, [imageFPs]);
+  }, []);
 
   return (
     <MainContainer>

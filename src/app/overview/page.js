@@ -18,11 +18,11 @@ const styleGenImgsToAdd = {
 };
 
 const stylesPrompt = [
-  { name: "Stock Photos", path: "/spImgs/stockphotos/" },
-  { name: "Characters", path: "/spImgs/characters/" },
-  { name: "Wallpapers", path: "/spImgs/wallpapers/" },
-  { name: "Logos", path: "/spImgs/logos/" },
-  { name: "Art", path: "/spImgs/art/" }
+  { name: "Stock Photos", path: "/spImgs/stockphotos/", route: "/stockphotos" },
+  { name: "Characters", path: "/spImgs/characters/", route: "/characters" },
+  { name: "Wallpapers", path: "/spImgs/wallpapers/", route: "/wallpapers" },
+  { name: "Logos", path: "/spImgs/logos/", route: "/logos" },
+  { name: "Art", path: "/spImgs/art/", route: "/art" }
 ];
 
 const OverviewPage = () => {
@@ -47,7 +47,7 @@ const OverviewPage = () => {
                 {stylesPrompt?.map((styleForPrompt, index) => {
                   return (
                     <div className={styles.styleBox} key={index}>
-                      <Link href={styleForPrompt.path}>
+                      <Link href={`/ai-art`}>
                         <div className={styles.styleBoxTitle}>
                           <h2>{styleForPrompt.name}</h2>
                         </div>

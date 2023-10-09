@@ -82,5 +82,17 @@
       "/output/genImgs/27.png",
       "/output/genImgs/28.png"
     ]
+  },
+  {
+    "tokenId": 1139274351,
+    "prompt": "Traditional library with floor-to-ceiling bookcases, rolling ladder, large wooden desk, leather armchair, antique rug, warm lighting, high resolution textures, intellectual and inviting atmosphere",
+    "style": "Art",
+    "bookmarked": false,
+    "images": [
+      "/output/genImgs/29.png",
+      "/output/genImgs/30.png",
+      "/output/genImgs/31.png",
+      "/output/genImgs/32.png"
+    ]
   }
 ]
