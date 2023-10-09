@@ -17,6 +17,14 @@ const styleGenImgsToAdd = {
   borderRadius: "4px"
 };
 
+const stylesPrompt = [
+  { name: "Stock Photos", path: "/spImgs/stockphotos/" },
+  { name: "Characters", path: "/spImgs/characters/" },
+  { name: "Wallpapers", path: "/spImgs/wallpapers/" },
+  { name: "Logos", path: "/spImgs/logos/" },
+  { name: "Art", path: "/spImgs/art/" }
+];
+
 const OverviewPage = () => {
   return (
     <MainContainer>
@@ -36,202 +44,35 @@ const OverviewPage = () => {
             </div>
             <div className={styles.stepContent}>
               <div className={styles.gridAiStyles}>
-                <div className={styles.styleBox}>
-                  <Link href="/ai-art/stockphotos">
-                    <div className={styles.styleBoxTitle}>
-                      <h2>Stock Photos</h2>
+                {stylesPrompt?.map((styleForPrompt, index) => {
+                  return (
+                    <div className={styles.styleBox} key={index}>
+                      <Link href={styleForPrompt.path}>
+                        <div className={styles.styleBoxTitle}>
+                          <h2>{styleForPrompt.name}</h2>
+                        </div>
+                        <div className={styles.rowAIStyles}>
+                          {[1, 2, 3, 4].map((imageIndex) => {
+                            return (
+                              <Image
+                                key={imageIndex}
+                                src={`${styleForPrompt.path}${imageIndex}.png`}
+                                width={85}
+                                height={85}
+                                alt={styleForPrompt.name}
+                                style={
+                                  (imageIndex == 1 && firstImageAIStyle) ||
+                                  (imageIndex == 4 && lastImageAIStyle)
+                                }
+                                priority={true}
+                              />
+                            );
+                          })}
+                        </div>
+                      </Link>
                     </div>
-                    <div className={styles.rowAIStyles}>
-                      <Image
-                        src="/ai-styles/stockphotos/1.png"
-                        width={85}
-                        height={85}
-                        alt="Character"
-                        style={firstImageAIStyle}
-                        priority={true}
-                      />
-                      <Image
-                        src="/ai-styles/stockphotos/2.png"
-                        width={85}
-                        height={85}
-                        alt="Character"
-                        priority={true}
-                      />
-                      <Image
-                        src="/ai-styles/stockphotos/3.png"
-                        width={85}
-                        height={85}
-                        alt="Character"
-                        priority={true}
-                      />
-                      <Image
-                        src="/ai-styles/stockphotos/4.png"
-                        width={85}
-                        height={85}
-                        alt="Character"
-                        style={lastImageAIStyle}
-                        priority={true}
-                      />
-                    </div>
-                  </Link>
-                </div>
-
-                <div className={styles.styleBox}>
-                  <Link href="/ai-art/characters">
-                    <div className={styles.styleBoxTitle}>
-                      <h2>Characters</h2>
-                    </div>
-                    <div className={styles.rowAIStyles}>
-                      <Image
-                        src="/ai-styles/characters/1.png"
-                        width={85}
-                        height={85}
-                        alt="Characters"
-                        style={firstImageAIStyle}
-                        priority={true}
-                      />
-                      <Image
-                        src="/ai-styles/characters/2.png"
-                        width={85}
-                        height={85}
-                        alt="Characters"
-                        priority={true}
-                      />
-                      <Image
-                        src="/ai-styles/characters/3.png"
-                        width={85}
-                        height={85}
-                        alt="Characters"
-                        priority={true}
-                      />
-                      <Image
-                        src="/ai-styles/characters/4.png"
-                        width={85}
-                        height={85}
-                        alt="Characters"
-                        style={lastImageAIStyle}
-                        priority={true}
-                      />
-                    </div>
-                  </Link>
-                </div>
-                <div className={styles.styleBox}>
-                  <Link href="/ai-art/wallpapers">
-                    <div className={styles.styleBoxTitle}>
-                      <h2>Wallpapers</h2>
-                    </div>
-                    <div className={styles.rowAIStyles}>
-                      <Image
-                        src="/ai-styles/wallpapers/1.png"
-                        width={85}
-                        height={85}
-                        alt="Wallpaper"
-                        style={firstImageAIStyle}
-                        priority={true}
-                      />
-                      <Image
-                        src="/ai-styles/wallpapers/2.png"
-                        width={85}
-                        height={85}
-                        alt="Wallpaper"
-                        priority={true}
-                      />
-                      <Image
-                        src="/ai-styles/wallpapers/3.png"
-                        width={85}
-                        height={85}
-                        alt="Wallpaper"
-                        priority={true}
-                      />
-                      <Image
-                        src="/ai-styles/wallpapers/4.png"
-                        width={85}
-                        height={85}
-                        alt="Wallpaper"
-                        style={lastImageAIStyle}
-                        priority={true}
-                      />
-                    </div>
-                  </Link>
-                </div>
-                <div className={styles.styleBox}>
-                  <Link href="/ai-art/logos">
-                    <div className={styles.styleBoxTitle}>
-                      <h2>Logos</h2>
-                    </div>
-                    <div className={styles.rowAIStyles}>
-                      <Image
-                        src="/ai-styles/logos/1.png"
-                        width={85}
-                        height={85}
-                        alt="logo"
-                        style={firstImageAIStyle}
-                        priority={true}
-                      />
-                      <Image
-                        src="/ai-styles/logos/2.png"
-                        width={85}
-                        height={85}
-                        alt="logo"
-                        priority={true}
-                      />
-                      <Image
-                        src="/ai-styles/logos/3.png"
-                        width={85}
-                        height={85}
-                        alt="logo"
-                        priority={true}
-                      />
-                      <Image
-                        src="/ai-styles/logos/4.png"
-                        width={85}
-                        height={85}
-                        alt="logo"
-                        style={lastImageAIStyle}
-                        priority={true}
-                      />
-                    </div>
-                  </Link>
-                </div>
-                <div className={styles.styleBox}>
-                  <Link href="/ai-art/art">
-                    <div className={styles.styleBoxTitle}>
-                      <h2>Art</h2>
-                    </div>
-                    <div className={styles.rowAIStyles}>
-                      <Image
-                        src="/ai-styles/art/1.png"
-                        width={85}
-                        height={85}
-                        alt="Character"
-                        style={firstImageAIStyle}
-                        priority={true}
-                      />
-                      <Image
-                        src="/ai-styles/art/2.png"
-                        width={85}
-                        height={85}
-                        alt="Character"
-                        priority={true}
-                      />
-                      <Image
-                        src="/ai-styles/art/3.png"
-                        width={85}
-                        height={85}
-                        alt="Character"
-                        priority={true}
-                      />
-                      <Image
-                        src="/ai-styles/art/4.png"
-                        width={85}
-                        height={85}
-                        alt="Character"
-                        style={lastImageAIStyle}
-                        priority={true}
-                      />
-                    </div>
-                  </Link>
-                </div>
+                  );
+                })}
               </div>
             </div>
           </div>
