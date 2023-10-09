@@ -42,6 +42,7 @@ const StarterPrompts = ({ style }) => {
 
   useEffect(() => {
     async function getSPImages() {
+      const jsonFile = await writeSPJson();
       // const currentImgFPs = await getCurrentGenImages();
       // setImgFilePaths(currentImgFPs);
       // const currentJSONImgs = await getCurrentJSON();

@@ -1,7 +1,14 @@
 import React from "react";
+import GridLayout from "../components/GridLayout";
+import Sidebar from "../components/Sidebar";
 
 const MarketPlaceLayout = () => {
-  return <div>MarketPlaceLayout</div>;
+  return (
+    <GridLayout>
+      <Sidebar route="" />
+      {children}
+    </GridLayout>
+  );
 };
 
-export default layout;
+export default MarketPlaceLayout;

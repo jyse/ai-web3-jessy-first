@@ -46,5 +46,41 @@
       "/output/genImgs/15.png",
       "/output/genImgs/16.png"
     ]
+  },
+  {
+    "tokenId": 1649184200,
+    "prompt": "Lighthouse on a stormy beach, surrounded by crashing waves and dramatic clouds, intense, detailed, high detail, coastal landscape",
+    "style": "Art",
+    "bookmarked": false,
+    "images": [
+      "/output/genImgs/17.png",
+      "/output/genImgs/18.png",
+      "/output/genImgs/19.png",
+      "/output/genImgs/20.png"
+    ]
+  },
+  {
+    "tokenId": 2935220663,
+    "prompt": "Glowing aurora borealis over a frozen lake, with towering mountains in the distance, ethereal, magical, winter landscape, high detail",
+    "style": "Art",
+    "bookmarked": false,
+    "images": [
+      "/output/genImgs/21.png",
+      "/output/genImgs/22.png",
+      "/output/genImgs/23.png",
+      "/output/genImgs/24.png"
+    ]
+  },
+  {
+    "tokenId": 2422256257,
+    "prompt": "Watercolor painting of a rolling countryside, with fields of flowers, a red barn, and a white picket fence, soft and delicate brushstrokes, pastel colors",
+    "style": "Art",
+    "bookmarked": false,
+    "images": [
+      "/output/genImgs/25.png",
+      "/output/genImgs/26.png",
+      "/output/genImgs/27.png",
+      "/output/genImgs/28.png"
+    ]
   }
 ]
