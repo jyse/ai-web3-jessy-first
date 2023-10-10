@@ -89,10 +89,10 @@ const AIArtPage = () => {
 
     toast.loading("🔥🧑‍🍳🤖 Generating images...");
 
-    const imageFilePaths = await fetchJSON("/api/images", "POST", { prompt });
+    const imageFilePaths = await makeRequest("/api/images", "POST", { prompt });
     // Handle imageFilePaths
 
-    const currentJSONImgs = await fetchJSON("/api/gen-json");
+    const currentJSONImgs = await makeRequest("/api/gen-json");
     // Handle currentJSONImgs
 
     // console.log("🤖Your prompt is: ", prompt);
@@ -115,8 +115,8 @@ const AIArtPage = () => {
   useEffect(() => {
     async function fetchData() {
       const [currentImgFPs, currentJSONImgs] = await Promise.all([
-        fetchJSON("/api/images"),
-        fetchJSON("/api/gen-json")
+        makeRequest("/api/images"),
+        makeRequest("/api/gen-json")
       ]);
 
       const jsonData = currentJSONImgs.data.reverse();
@@ -177,7 +177,7 @@ const AIArtPage = () => {
             <div className={styles.sectionTitle}>
               <h2> Recent Generations</h2>
             </div>
-            {currentGenJSON?.map((item, index) => {
+            {state.currentGenJSON?.map((item, index) => {
               return (
                 <div className={styles.contentContainer} key={index}>
                   <div className={styles.recentPrompt}>{item.prompt}</div>
