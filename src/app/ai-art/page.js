@@ -60,7 +60,10 @@ const AIArtPage = () => {
     });
 
     if (response.ok) {
-      toast.success("🔥🖼️✨Image successfully added!");
+      toast.success("🔥🖼️✨Images succesfully added!", {
+        duration: 8000
+      });
+
       return response.json();
     } else {
       toast.error("Error adding image to collection");
@@ -71,10 +74,17 @@ const AIArtPage = () => {
   async function onSubmit(e) {
     e.preventDefault();
     console.log("🤖Your prompt is: ", prompt);
+    toast.loading("🔥🧑‍🍳🤖 Generating images...");
+
     const imageFilePaths = await getNewImages(prompt);
     setImgFilePaths(imageFilePaths);
+
     console.log("🤖🎨 The generated images have been written!");
-    toast.success("Images succesfully generated!");
+    toast.dismiss();
+    toast.success("🔥Images succesfully generated!", {
+      duration: 8000
+    });
+
     const currentJSONImgs = await getCurrentJSON();
     console.log("🚀📝Getting JSON data");
     setCurrentJSON(currentJSONImgs.data.reverse());
