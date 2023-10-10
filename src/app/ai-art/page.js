@@ -29,7 +29,8 @@ const getNewImages = async (prompt) => {
   const response = await fetch("/api/images", {
     method: "POST",
     body: JSON.stringify({
-      prompt: prompt
+      prompt: prompt,
+      style: chosenStyle
     })
   });
 

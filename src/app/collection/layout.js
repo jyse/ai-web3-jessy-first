@@ -5,7 +5,7 @@ import Sidebar from "../components/Sidebar";
 const CollectionLayout = ({ children }) => {
   return (
     <GridLayout>
-      <Sidebar route="/collections" />
+      <Sidebar route="/collection" />
       {children}
     </GridLayout>
   );

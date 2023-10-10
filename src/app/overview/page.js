@@ -131,18 +131,20 @@ const OverviewPage = () => {
               </div>
             </div>
             <div className={styles.step}>
-              <div className={styles.stepIntro}>
-                <div className={styles.icon}>💰</div>
-                <div className={styles.title}>
-                  <h2> Publish NFT collection on a marketplace for sale!</h2>
-                  <h3> Let's mint!</h3>
+              <Link href="/marketplace">
+                <div className={styles.stepIntro}>
+                  <div className={styles.icon}>💰</div>
+                  <div className={styles.title}>
+                    <h2> Your NFT collection on a marketplace for sale!</h2>
+                    <h3> 🔥 The goal is to have our collection here! </h3>
+                  </div>
                 </div>
-              </div>
+              </Link>
               <div className={styles.stepContent}>
-                <h2>The goal is to have our collection here </h2>
-                {/* <Link href="https://testnets.opensea.io/...">
-               <h2>here</h2>
-               </Link>  */}
+                <h2>
+                  After uploading your images and deploying the contract, time
+                  to mint!🍬✨
+                </h2>
               </div>
             </div>
           </div>

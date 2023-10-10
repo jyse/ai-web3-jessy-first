@@ -7,9 +7,8 @@ import { usePathname } from "next/navigation";
 const sideBarDetails = [
   { route: "/", items: ["Overview", "Resources"] },
   {
-    route: "/collections",
-    // change this title maybe
-    items: ["Current collection"]
+    route: "/collection",
+    items: ["Current collection", "Sell your NFT collection"]
   },
   { route: "/resources", items: ["Overview", "Resources"] }
 ];
@@ -35,7 +34,17 @@ const Sidebar = () => {
       <div className={styles.sideBarLinks}>
         {menuItems.map((item, index) => (
           <div className={styles.link} key={index}>
-            <Link href={item === "Overview" ? "/" : `/${item.toLowerCase()}`}>
+            <Link
+              href={
+                item === "Overview"
+                  ? "/"
+                  : item === "Current collection"
+                  ? "/collection"
+                  : item === "Sell your NFT collection"
+                  ? "/marketplace"
+                  : `/${item.toLowerCase()}`
+              }
+            >
               <h2>{item}</h2>
             </Link>
           </div>
