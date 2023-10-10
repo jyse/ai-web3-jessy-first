@@ -10,7 +10,7 @@ const styleStarterPromptImg = {
 };
 
 const getPromptImg = (starterPrompt) => {
-  console.log(starterPrompt, "🐼💖🐲 putting prompt inside input");
+  console.log("🔥🚀 Starter Prompt: 🎨🤖✨ ", starterPrompt);
 };
 
 const getSPJSON = async () => {
@@ -51,20 +51,28 @@ const StarterPrompts = ({ chosenStyle }) => {
         <div className={styles.spGrid}>
           {spJSONObjects?.map((spObject, index) => {
             return (
-              <div
-                className={styles.imgItem}
-                onClick={() => getPromptImg(spObject.prompt)}
+              <Link
+                href={{
+                  pathname: "/ai-art",
+                  query: { starterPrompt: spObject.prompt }
+                }}
                 key={index}
               >
-                <Image
-                  width={175}
-                  height={175}
-                  key={1}
-                  src={spObject.imageFile}
-                  alt={spObject.imageFile}
-                  style={styleStarterPromptImg}
-                />
-              </div>
+                <div
+                  className={styles.imgItem}
+                  onClick={() => getPromptImg(spObject.prompt)}
+                >
+                  <Image
+                    width={175}
+                    height={175}
+                    key={1}
+                    src={spObject.imageFile}
+                    alt={spObject.imageFile}
+                    style={styleStarterPromptImg}
+                    priority={true}
+                  />
+                </div>
+              </Link>
             );
           })}
         </div>

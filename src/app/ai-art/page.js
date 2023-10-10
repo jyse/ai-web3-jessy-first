@@ -4,6 +4,7 @@ import MainContainer from "../components/MainContainer";
 import styles from "../page.module.css";
 import RowGallery from "../components/RowGallery";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 
 // ***************************
 //     AI Generator
@@ -42,8 +43,11 @@ const styleGenImgsToAdd = {
 
 const AIArtPage = () => {
   const [prompt, setPrompt] = useState("");
+
   const [imageFPs, setImgFilePaths] = useState([]);
   const [currentJSON, setCurrentJSON] = useState([]);
+  const searchParams = useSearchParams();
+  const chosenPrompt = searchParams.get("starterPrompt");
 
   const handleClearClick = () => {
     setPrompt("");
@@ -91,7 +95,7 @@ const AIArtPage = () => {
                   className="input"
                   type="text"
                   placeholder="Describe the image you want to generate"
-                  value={prompt}
+                  value={chosenPrompt ? chosenPrompt : prompt}
                   onChange={(e) => setPrompt(e.target.value)}
                 />
                 <button className="button" type="submit">
