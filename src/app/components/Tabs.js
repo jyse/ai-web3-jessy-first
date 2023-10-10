@@ -16,7 +16,7 @@ const Tabs = () => {
       <div className={styles.tabItem}>
         <Link
           className={`link ${pathName === "/" ? "active" : ""}`}
-          href="/ai-art"
+          href={{ pathname: "/ai-art", query: { style: "characters" } }}
         >
           <h2>AI Art</h2>
         </Link>

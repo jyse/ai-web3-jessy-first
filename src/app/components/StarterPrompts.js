@@ -9,8 +9,8 @@ const styleStarterPromptImg = {
   alignSelf: "center"
 };
 
-const getPromptImg = () => {
-  console.log(" TEST 🐲 putting prompt inside input");
+const getPromptImg = (starterPrompt) => {
+  console.log(starterPrompt, "🐼💖🐲 putting prompt inside input");
 };
 
 const getSPJSON = async () => {
@@ -24,13 +24,16 @@ const filterObjectsByStyle = (arrayOfObjects, style) => {
   return arrayOfObjects.filter((obj) => obj.style == style);
 };
 
-const StarterPrompts = ({ style }) => {
+const StarterPrompts = ({ chosenStyle }) => {
   const [spJSONObjects, setSPJSON] = useState([]);
 
   useEffect(() => {
     async function getSPImages() {
       const spJSON = await getSPJSON();
-      const filteredSPObjects = await filterObjectsByStyle(spJSON.data, "art");
+      const filteredSPObjects = await filterObjectsByStyle(
+        spJSON.data,
+        chosenStyle
+      );
       setSPJSON(filteredSPObjects);
     }
     getSPImages();
@@ -58,7 +61,7 @@ const StarterPrompts = ({ style }) => {
                   height={175}
                   key={1}
                   src={spObject.imageFile}
-                  alt={"Starter Prompt"}
+                  alt={spObject.imageFile}
                   style={styleStarterPromptImg}
                 />
               </div>

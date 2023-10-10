@@ -167,7 +167,7 @@
   {
     "prompt": "8k portrait of a serene lakeside landscape with calm waters reflecting the surrounding trees and mountains, creating a peaceful and tranquil atmosphere, high resolution, highly detailed.",
     "style": "stockphotos",
-    "imageFile": "/spImgs/stockphotos/.png"
+    "imageFile": "/spImgs/stockphotos/1.png"
   },
   {
     "prompt": "8k portrait of a vintage film camera, showcasing its retro design, mechanical dials, and the nostalgia of analog photography.",
@@ -227,7 +227,7 @@
   {
     "prompt": "8k portrait of An enchanting and magical winter wonderland, with snow-covered trees, ice crystals, and a sense of quiet serenity.",
     "style": "wallpapers",
-    "imageFile": "/spImgs/wallpapers/.png"
+    "imageFile": "/spImgs/wallpapers/1.png"
   },
   {
     "prompt": "8k portrait of a captivating European cityscape, with historic architecture, winding streets, and charming cafes.",
@@ -237,7 +237,7 @@
   {
     "prompt": "8k portrait of a vintage concert poster, with a band name, tour dates, and artistic illustrations capturing the spirit of the music.",
     "style": "wallpapers",
-    "imageFile": "/spImgs/wallpapers/.png"
+    "imageFile": "/spImgs/wallpapers/4.png"
   },
   {
     "prompt": "An underwater scene featuring a colorful coral reef and a variety of tropical fish, sun rays penetrating the water's surface, photorealistic, high detail",

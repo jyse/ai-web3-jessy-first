@@ -1,16 +1,16 @@
 "use client";
 import React from "react";
 import StarterPrompts from "../components/StarterPrompts";
-import { usePathname } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import AIGridLayout from "../components/AIGridLayout";
 
 const AIArtLayout = ({ children }) => {
-  const pathName = usePathname();
+  const searchParams = useSearchParams();
+  const chosenStyle = searchParams.get("style");
+
   return (
     <AIGridLayout>
-      <StarterPrompts
-        style={pathName == "/ai-art" ? "/ai-art/stockphotos" : pathName}
-      />
+      <StarterPrompts chosenStyle={chosenStyle} />
       {children}
     </AIGridLayout>
   );

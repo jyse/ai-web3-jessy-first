@@ -18,12 +18,20 @@ const styleGenImgsToAdd = {
 };
 
 const stylesPrompt = [
-  { name: "Stock Photos", path: "/spImgs/stockphotos/", route: "/stockphotos" },
+  {
+    name: "Stock Photos",
+    path: "/spImgs/stockphotos/",
+    route: "/stockphotos"
+  },
   { name: "Characters", path: "/spImgs/characters/", route: "/characters" },
   { name: "Wallpapers", path: "/spImgs/wallpapers/", route: "/wallpapers" },
   { name: "Logos", path: "/spImgs/logos/", route: "/logos" },
   { name: "Art", path: "/spImgs/art/", route: "/art" }
 ];
+
+const spStyle = () => {
+  console.log("sp Style clicked upon 🐲🐲🐲🐲");
+};
 
 const OverviewPage = () => {
   return (
@@ -46,9 +54,21 @@ const OverviewPage = () => {
               <div className={styles.stepContent}>
                 <div className={styles.gridAiStyles}>
                   {stylesPrompt?.map((styleForPrompt, index) => {
+                    let chosenStyle = styleForPrompt.route.slice(1);
                     return (
-                      <div className={styles.styleBox} key={index}>
-                        <Link href={`/ai-art`}>
+                      <div
+                        className={styles.styleBox}
+                        key={index}
+                        onClick={() => {
+                          spStyle(chosenStyle);
+                        }}
+                      >
+                        <Link
+                          href={{
+                            pathname: "/ai-art",
+                            query: { style: chosenStyle }
+                          }}
+                        >
                           <div className={styles.styleBoxTitle}>
                             <h2>{styleForPrompt.name}</h2>
                           </div>
