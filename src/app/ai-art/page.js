@@ -11,29 +11,38 @@ import toast, { Toaster } from "react-hot-toast";
 //                        AI Generator
 // *******************************************************************
 
-const getCurrentJSON = async () => {
-  const response = await fetch("/api/gen-json", {
-    method: "GET"
-  });
-  return response.json();
-};
+// const getCurrentJSON = async () => {
+//   const response = await fetch("/api/gen-json", {
+//     method: "GET"
+//   });
+//   return response.json();
+// };
 
-const getCurrentGenImages = async () => {
-  const response = await fetch("/api/images", {
-    method: "GET"
-  });
-  return response.json();
-};
+// const getCurrentGenImages = async () => {
+//   const response = await fetch("/api/images", {
+//     method: "GET"
+//   });
+//   return response.json();
+// };
 
-const getNewImages = async (prompt) => {
-  console.log("🎨🤖 Generating your images...");
-  const response = await fetch("/api/images", {
-    method: "POST",
-    body: JSON.stringify({
-      prompt: prompt
-    })
-  });
+// const getNewImages = async (prompt) => {
+//   console.log("🎨🤖 Generating your images...");
+//   const response = await fetch("/api/images", {
+//     method: "POST",
+//     body: JSON.stringify({
+//       prompt: prompt
+//     })
+//   });
 
+//   return response.json();
+// };
+
+const makeRequest = async (url, method = "GET", body) => {
+  const response = await fetch(url, {
+    method,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body)
+  });
   return response.json();
 };
 
@@ -42,8 +51,9 @@ const styleGenImgsToAdd = {
 };
 
 const AIArtPage = () => {
-  const [imageFPs, setGenImgFilePaths] = useState([]);
-  const [currentGenJSON, setCurrentGenJSON] = useState([]);
+  // const [imageFPs, setGenImgFilePaths] = useState([]);
+  // const [currentGenJSON, setCurrentGenJSON] = useState([]);
+  const [state, setState] = useState({ imageFPs: [], currentGenJSON: [] });
   const searchParams = useSearchParams();
   const chosenPrompt = searchParams.get("starterPrompt");
   const [prompt, setPrompt] = useState(chosenPrompt ? chosenPrompt : "");
@@ -52,13 +62,16 @@ const AIArtPage = () => {
     setPrompt("");
   };
   const addImage = async (imgFp) => {
-    const response = await fetch("/api/gen-json", {
-      method: "POST",
-      body: JSON.stringify({
-        addedImgFp: imgFp
-      })
-    });
+    // const response = await fetch("/api/gen-json", {
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     addedImgFp: imgFp
+    //   })
+    // });
 
+    const response = await makeRequest("/api/gen-json", "POST", {
+      addedImgFp: imgFp
+    });
     if (response.ok) {
       toast.success("🔥🖼️✨Image succesfully added!", {
         duration: 8000
@@ -73,32 +86,57 @@ const AIArtPage = () => {
 
   async function onSubmit(e) {
     e.preventDefault();
-    console.log("🤖Your prompt is: ", prompt);
+
     toast.loading("🔥🧑‍🍳🤖 Generating images...");
 
-    const imageFilePaths = await getNewImages(prompt);
-    setGenImgFilePaths(imageFilePaths);
+    const imageFilePaths = await fetchJSON("/api/images", "POST", { prompt });
+    // Handle imageFilePaths
 
-    console.log("🤖🎨 The generated images have been written!");
-    toast.dismiss();
-    toast.success("🔥Images succesfully generated!", {
-      duration: 8000
-    });
+    const currentJSONImgs = await fetchJSON("/api/gen-json");
+    // Handle currentJSONImgs
 
-    const currentJSONImgs = await getCurrentJSON();
-    console.log("🚀📝Getting JSON data");
-    setCurrentGenJSON(currentJSONImgs.data.reverse());
+    // console.log("🤖Your prompt is: ", prompt);
+    // toast.loading("🔥🧑‍🍳🤖 Generating images...");
+
+    // const imageFilePaths = await getNewImages(prompt);
+    // setGenImgFilePaths(imageFilePaths);
+
+    // console.log("🤖🎨 The generated images have been written!");
+    // toast.dismiss();
+    // toast.success("🔥Images succesfully generated!", {
+    //   duration: 8000
+    // });
+
+    // const currentJSONImgs = await getCurrentJSON();
+    // console.log("🚀📝Getting JSON data");
+    // setCurrentGenJSON(currentJSONImgs.data.reverse());
   }
 
   useEffect(() => {
-    async function getImages() {
-      const currentImgFPs = await getCurrentGenImages();
-      setGenImgFilePaths(currentImgFPs);
-      const currentJSONImgs = await getCurrentJSON();
+    async function fetchData() {
+      const [currentImgFPs, currentJSONImgs] = await Promise.all([
+        fetchJSON("/api/images"),
+        fetchJSON("/api/gen-json")
+      ]);
+
       const jsonData = currentJSONImgs.data.reverse();
-      setCurrentGenJSON(jsonData);
+
+      setState({
+        ...state,
+        imageFPs: currentImgFPs,
+        currentGenJSON: jsonData
+      });
     }
-    getImages();
+    fetchData();
+
+    // async function getImages() {
+    //   const currentImgFPs = await getCurrentGenImages();
+    //   setGenImgFilePaths(currentImgFPs);
+    //   const currentJSONImgs = await getCurrentJSON();
+    //   const jsonData = currentJSONImgs.data.reverse();
+    //   setCurrentGenJSON(jsonData);
+    // }
+    // getImages();
   }, []);
 
   useEffect(() => {
