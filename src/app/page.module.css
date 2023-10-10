@@ -19,6 +19,10 @@
   gap: 10px;
   font-family: var(--font-mono);
 }
+.connect:hover {
+  color: var(--highlight-secondary);
+  cursor: pointer;
+}
 
 .tabs {
   /* Add coloured stripe for active state */
@@ -27,6 +31,7 @@
 }
 .tabItem:hover {
   color: var(--highlight-primary);
+  cursor: pointer;
 }
 
 .companyName {

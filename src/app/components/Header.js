@@ -11,9 +11,15 @@ const Header = () => {
           <div className={styles.companyName}>ArtIVerse Studio</div>
         </Link>
         <div className={styles.menu}>
-          <p>Discord</p>
-          <p>Connect</p>
-          <p>Newsletter</p>
+          <div className={styles.connect}>
+            <p>Discord</p>
+          </div>
+          <div className={styles.connect}>
+            <p>Connect</p>
+          </div>
+          <div className={styles.connect}>
+            <p>Newsletter</p>
+          </div>
         </div>
       </div>
       <Tabs />
