@@ -42,11 +42,11 @@ const styleGenImgsToAdd = {
 };
 
 const AIArtPage = () => {
-  const [prompt, setPrompt] = useState("");
   const [imageFPs, setImgFilePaths] = useState([]);
   const [currentJSON, setCurrentJSON] = useState([]);
   const searchParams = useSearchParams();
   const chosenPrompt = searchParams.get("starterPrompt");
+  const [prompt, setPrompt] = useState(chosenPrompt ? chosenPrompt : "");
 
   const handleClearClick = () => {
     setPrompt("");
@@ -91,6 +91,10 @@ const AIArtPage = () => {
     getImages();
   }, []);
 
+  useEffect(() => {
+    setPrompt(chosenPrompt ? chosenPrompt : "");
+  }, [chosenPrompt]);
+
   return (
     <MainContainer>
       <Toaster position="top-center" />
@@ -112,7 +116,7 @@ const AIArtPage = () => {
                   className="input"
                   type="text"
                   placeholder="Describe the image you want to generate"
-                  value={chosenPrompt ? chosenPrompt : prompt}
+                  value={prompt}
                   onChange={(e) => setPrompt(e.target.value)}
                 />
                 <button className="button" type="submit">
