@@ -24,7 +24,7 @@ const filterObjectsByStyle = (arrayOfObjects, style) => {
   return arrayOfObjects.filter((obj) => obj.style == style);
 };
 
-const StarterPrompts = ({ chosenStyle }) => {
+const StarterPrompts = ({ styleStarterPrompts }) => {
   const [spJSONObjects, setSPJSON] = useState([]);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const StarterPrompts = ({ chosenStyle }) => {
       const spJSON = await getSPJSON();
       const filteredSPObjects = await filterObjectsByStyle(
         spJSON.data,
-        chosenStyle
+        styleStarterPrompts
       );
       setSPJSON(filteredSPObjects);
     }

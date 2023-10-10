@@ -2,8 +2,9 @@
 import React, { useEffect, useState } from "react";
 import styles from "../page.module.css";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-const details = [
+const sideBarDetails = [
   { route: "/", items: ["Overview", "Resources"] },
   {
     route: "/collections",
@@ -12,36 +13,32 @@ const details = [
   { route: "/resources", items: ["Overview", "Resources"] }
 ];
 
-const getSidebarDetails = (route) => {
-  const sideBarDetails = details.find((page) => page.route === route);
-
-  if (sideBarDetails) {
-    return sideBarDetails.items;
-  } else {
-    return [];
-  }
-};
-
-const Sidebar = ({ route }) => {
+const Sidebar = () => {
   const [menuItems, setMenuItems] = useState([]);
+  const pathName = usePathname();
 
   useEffect(() => {
-    const items = getSidebarDetails(route);
-    setMenuItems(items);
-  }, [route]);
+    const pageMenu = sideBarDetails.find(
+      (pageMenuDetails) => pageMenuDetails.route === pathName
+    );
+
+    if (pageMenu) {
+      setMenuItems(pageMenu.items);
+    } else {
+      setMenuItems([]);
+    }
+  }, [pathName]);
 
   return (
     <div className={styles.sidebar}>
       <div className={styles.sideBarLinks}>
-        {menuItems.map((item, index) => {
-          return (
-            <div className={styles.link} key={index}>
-              <Link href={"/" + item?.toLowerCase()}>
-                <h2>{item}</h2>
-              </Link>
-            </div>
-          );
-        })}
+        {menuItems.map((item, index) => (
+          <div className={styles.link} key={index}>
+            <Link href={item === "Overview" ? "/" : `/${item.toLowerCase()}`}>
+              <h2>{item}</h2>
+            </Link>
+          </div>
+        ))}
       </div>
     </div>
   );

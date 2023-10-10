@@ -14,7 +14,7 @@ export async function POST(request) {
     "Content-Type": "application/json"
   };
 
-  const { prompt, style } = await request.json();
+  const { prompt } = await request.json();
   console.log("🔥🚀🎨 Sending prompt to DreamStudio API");
 
   const body = {
@@ -24,7 +24,7 @@ export async function POST(request) {
     seed: 0,
     cfg_scale: 5,
     samples: 4,
-    style_preset: style,
+    style_preset: "",
     text_prompts: [
       {
         text: prompt,

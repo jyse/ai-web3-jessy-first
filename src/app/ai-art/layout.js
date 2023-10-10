@@ -6,11 +6,14 @@ import AIGridLayout from "../components/AIGridLayout";
 
 const AIArtLayout = ({ children }) => {
   const searchParams = useSearchParams();
+  const defaultStyle = "characters";
   const chosenStyle = searchParams.get("style");
 
   return (
     <AIGridLayout>
-      <StarterPrompts chosenStyle={chosenStyle} />
+      <StarterPrompts
+        styleStarterPrompts={chosenStyle ? chosenStyle : defaultStyle}
+      />
       {children}
     </AIGridLayout>
   );

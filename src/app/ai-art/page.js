@@ -30,7 +30,6 @@ const getNewImages = async (prompt) => {
     method: "POST",
     body: JSON.stringify({
       prompt: prompt
-      //Add style
     })
   });
 
