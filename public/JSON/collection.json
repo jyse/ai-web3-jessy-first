@@ -1,18 +1,1 @@
-[
-  {
-    "prompt": "The iconic golden template of Kyoto, historical, high detail, landscape, with a pond that have gold fish in it, illustration style",
-    "images": "/output/genImgs/33_230.png"
-  },
-  {
-    "prompt": "Futuristic cyber girl developer, science fiction, illustration style, random hair colour and eye colour, wearing gothic clothing like a girl from the anime series Death Note",
-    "images": "/output/genImgs/26_13.png"
-  },
-  {
-    "prompt": "Female Jedi with white clothing, green eyes, like the character played by Natalie Portman in Star Wars, illustration style",
-    "images": "/output/genImgs/18_487.png"
-  },
-  {
-    "prompt": "Retro comic style artwork, highly detailed spiderman, comic book cover, symmetrical, vibrant",
-    "images": "/output/genImgs/11_485.png"
-  }
-]
+[{"prompt":"The iconic golden template of Kyoto, historical, high detail, landscape, with a pond that have gold fish in it, illustration style","image":"/output/genImgs/33_230.png"},{"prompt":"Futuristic cyber girl developer, science fiction, illustration style, random hair colour and eye colour, wearing gothic clothing like a girl from the anime series Death Note","image":"/output/genImgs/26_13.png"},{"prompt":"Female Jedi with white clothing, green eyes, like the character played by Natalie Portman in Star Wars, illustration style","image":"/output/genImgs/18_487.png"},{"prompt":"Retro comic style artwork, highly detailed spiderman, comic book cover, symmetrical, vibrant","image":"/output/genImgs/11_485.png"},{"prompt":"A close-up of a corgi's face, with a fluffy black and tan coat, its ears perked up and its eyes looking inquisitively. The corgi's fur is groomed and its nose is slightly wrinkled, as if it is sniffing the air. The background is blurred, with a hint of a park setting. Realistic, Close-up, Dog Park.","image":"/output/genImgs/31_102.png"}]

@@ -3,7 +3,6 @@ import { readFile } from "fs/promises";
 import { join } from "path";
 import { getGenImgsFilePaths } from "../../../../services/images";
 
-// also add preset Style in here
 export async function POST(request) {
   const path =
     "https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/text-to-image";

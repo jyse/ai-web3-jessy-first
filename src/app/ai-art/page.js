@@ -12,7 +12,7 @@ import toast, { Toaster } from "react-hot-toast";
 // *******************************************************************
 
 const getCurrentJSON = async () => {
-  const response = await fetch("/api/json", {
+  const response = await fetch("/api/gen-json", {
     method: "GET"
   });
   return response.json();
@@ -42,8 +42,8 @@ const styleGenImgsToAdd = {
 };
 
 const AIArtPage = () => {
-  const [imageFPs, setImgFilePaths] = useState([]);
-  const [currentJSON, setCurrentJSON] = useState([]);
+  const [imageFPs, setGenImgFilePaths] = useState([]);
+  const [currentGenJSON, setCurrentGenJSON] = useState([]);
   const searchParams = useSearchParams();
   const chosenPrompt = searchParams.get("starterPrompt");
   const [prompt, setPrompt] = useState(chosenPrompt ? chosenPrompt : "");
@@ -52,7 +52,7 @@ const AIArtPage = () => {
     setPrompt("");
   };
   const addImage = async (imgFp) => {
-    const response = await fetch("/api/json", {
+    const response = await fetch("/api/gen-json", {
       method: "POST",
       body: JSON.stringify({
         addedImgFp: imgFp
@@ -77,7 +77,7 @@ const AIArtPage = () => {
     toast.loading("🔥🧑‍🍳🤖 Generating images...");
 
     const imageFilePaths = await getNewImages(prompt);
-    setImgFilePaths(imageFilePaths);
+    setGenImgFilePaths(imageFilePaths);
 
     console.log("🤖🎨 The generated images have been written!");
     toast.dismiss();
@@ -87,16 +87,16 @@ const AIArtPage = () => {
 
     const currentJSONImgs = await getCurrentJSON();
     console.log("🚀📝Getting JSON data");
-    setCurrentJSON(currentJSONImgs.data.reverse());
+    setCurrentGenJSON(currentJSONImgs.data.reverse());
   }
 
   useEffect(() => {
     async function getImages() {
       const currentImgFPs = await getCurrentGenImages();
-      setImgFilePaths(currentImgFPs);
+      setGenImgFilePaths(currentImgFPs);
       const currentJSONImgs = await getCurrentJSON();
       const jsonData = currentJSONImgs.data.reverse();
-      setCurrentJSON(jsonData);
+      setCurrentGenJSON(jsonData);
     }
     getImages();
   }, []);
@@ -108,8 +108,8 @@ const AIArtPage = () => {
   return (
     <MainContainer>
       <Toaster position="top-center" />
-      <div className={styles.aiGenContainer}>
-        <div className={styles.aiGenContent}>
+      <div className={styles.mainPageContainer}>
+        <div className={styles.mainContent}>
           <div className={styles.promptContainer}>
             <div className={styles.promptIntro}>
               <h3>Prompt</h3>
@@ -135,13 +135,13 @@ const AIArtPage = () => {
               </div>
             </form>
           </div>
-          <div className={styles.recentGensContainer}>
-            <div className={styles.recentGenTitle}>
+          <div className={styles.sectionContainer}>
+            <div className={styles.sectionTitle}>
               <h2> Recent Generations</h2>
             </div>
-            {currentJSON?.map((item, index) => {
+            {currentGenJSON?.map((item, index) => {
               return (
-                <div className={styles.recentPromptContainer} key={index}>
+                <div className={styles.contentContainer} key={index}>
                   <div className={styles.recentPrompt}>{item.prompt}</div>
                   <RowGallery>
                     {item.images.map((imgFp, imageIndex) => (

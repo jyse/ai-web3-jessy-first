@@ -1,7 +1,6 @@
 import fs from "fs";
 import { readFile } from "fs/promises";
 import { join } from "path";
-
 import { getCollectionImgsFPs } from "../../../../services/collection";
 
 async function getImageBase64(imgFp) {
@@ -39,7 +38,7 @@ const addImageToCollection = async (imgFp) => {
 
       const addedImgObj = {
         prompt: promptDetails.prompt,
-        images: imgFp
+        image: imgFp
       };
 
       collectionData.push(addedImgObj);
