@@ -50,12 +50,20 @@ export async function POST(request) {
 
   const responseJSON = await response.json();
 
+  const getFileIdentifier = () => {
+    const randomFraction = Math.random();
+    const randomNumber = Math.floor(randomFraction * 501);
+    return randomNumber;
+  };
+
+  const identifier = getFileIdentifier();
+
   const currentImgsFilePaths = await getGenImgsFilePaths();
   const amountCurrentImages = currentImgsFilePaths.length + 1;
 
   const writeImages = responseJSON.artifacts.map(async (image, index) => {
     let imageIndex = amountCurrentImages + index;
-    let imageFilePath = `./public/output/genImgs/${imageIndex}.png`;
+    let imageFilePath = `./public/output/genImgs/${imageIndex}_${identifier}.png`;
 
     await fs.promises.writeFile(
       imageFilePath,
@@ -75,7 +83,7 @@ export async function POST(request) {
 
   const writeJSON = responseJSON.artifacts.map(async (image, index) => {
     let imageIndex = amountCurrentImages + index;
-    let imageFilePath = `/output/genImgs/${imageIndex}.png`;
+    let imageFilePath = `/output/genImgs/${imageIndex}_${identifier}.png`;
     imageObject.tokenId = image.seed;
     imageObject.images.push(imageFilePath);
   });

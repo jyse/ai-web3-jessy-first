@@ -74,6 +74,7 @@ const AIArtPage = () => {
     const imageFilePaths = await getNewImages(prompt);
     setImgFilePaths(imageFilePaths);
     console.log("🤖🎨 The generated images have been written!");
+    toast.success("Images succesfully generated!");
     const currentJSONImgs = await getCurrentJSON();
     console.log("🚀📝Getting JSON data");
     setCurrentJSON(currentJSONImgs.data.reverse());
