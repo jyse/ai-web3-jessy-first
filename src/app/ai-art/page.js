@@ -85,6 +85,8 @@ const AIArtPage = () => {
     getImages();
   }, []);
 
+  //adding toaster now!
+
   return (
     <MainContainer>
       <div className={styles.aiGenContainer}>
