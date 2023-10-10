@@ -11,16 +11,11 @@ import toast, { Toaster } from "react-hot-toast";
 //                        AI Generator
 // *******************************************************************
 
-const getCurrentJSON = async () => {
-  const response = await fetch("/api/gen-json", {
-    method: "GET"
-  });
-  return response.json();
-};
-
-const getCurrentGenImages = async () => {
-  const response = await fetch("/api/images", {
-    method: "GET"
+const makeRequest = async (url, method = "GET", body) => {
+  const response = await fetch(url, {
+    method,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body)
   });
   return response.json();
 };
@@ -42,8 +37,8 @@ const styleGenImgsToAdd = {
 };
 
 const AIArtPage = () => {
-  const [imageFPs, setImgFilePaths] = useState([]);
-  const [currentJSON, setCurrentJSON] = useState([]);
+  const [genImgFPs, setGenImgFPs] = useState([]);
+  const [genJSON, setGenJSON] = useState([]);
   const searchParams = useSearchParams();
   const chosenPrompt = searchParams.get("starterPrompt");
   const [prompt, setPrompt] = useState(chosenPrompt ? chosenPrompt : "");
@@ -51,12 +46,10 @@ const AIArtPage = () => {
   const handleClearClick = () => {
     setPrompt("");
   };
+
   const addImage = async (imgFp) => {
-    const response = await fetch("/api/gen-json", {
-      method: "POST",
-      body: JSON.stringify({
-        addedImgFp: imgFp
-      })
+    const response = await makeRequest("/api/gen-json", "POST", {
+      addedImgFp: imgFp
     });
 
     if (response.ok) {
@@ -76,8 +69,8 @@ const AIArtPage = () => {
     console.log("🤖Your prompt is: ", prompt);
     toast.loading("🔥🧑‍🍳🤖 Generating images...");
 
-    const imageFilePaths = await getNewImages(prompt);
-    setImgFilePaths(imageFilePaths);
+    const imageFilePaths = await makeRequest("/api/images", "POST", { prompt });
+    setGenImgFPs(imageFilePaths);
 
     console.log("🤖🎨 The generated images have been written!");
     toast.dismiss();
@@ -85,18 +78,17 @@ const AIArtPage = () => {
       duration: 8000
     });
 
-    const currentJSONImgs = await getCurrentJSON();
+    const genJSONImgs = await makeRequest("/api/gen-json");
     console.log("🚀📝Getting JSON data");
-    setCurrentJSON(currentJSONImgs.data.reverse());
+    setGenJSON(genJSONImgs.data.reverse());
   }
 
   useEffect(() => {
     async function getImages() {
-      const currentImgFPs = await getCurrentGenImages();
-      setImgFilePaths(currentImgFPs);
-      const currentJSONImgs = await getCurrentJSON();
-      const jsonData = currentJSONImgs.data.reverse();
-      setCurrentJSON(jsonData);
+      const genImgFPs = await makeRequest("/api/images");
+      setGenImgFPs(genImgFPs);
+      const genJSONImgs = await makeRequest("/api/gen-json");
+      setGenJSON(genJSONImgs.data.reverse());
     }
     getImages();
   }, []);
@@ -139,7 +131,7 @@ const AIArtPage = () => {
             <div className={styles.sectionTitle}>
               <h2> Recent Generations</h2>
             </div>
-            {currentJSON?.map((item, index) => {
+            {genJSON?.map((item, index) => {
               return (
                 <div className={styles.contentContainer} key={index}>
                   <div className={styles.recentPrompt}>{item.prompt}</div>
