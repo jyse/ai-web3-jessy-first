@@ -5,10 +5,11 @@ import styles from "../page.module.css";
 import RowGallery from "../components/RowGallery";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
+import toast, { Toaster } from "react-hot-toast";
 
-// ***************************
-//     AI Generator
-// ***************************
+// *******************************************************************
+//                        AI Generator
+// *******************************************************************
 
 const getCurrentJSON = async () => {
   const response = await fetch("/api/json", {
@@ -40,20 +41,8 @@ const styleGenImgsToAdd = {
   borderRadius: "4px"
 };
 
-const addImage = async (imgFp) => {
-  console.log("🎨🤖 Adding image to collection");
-  const response = await fetch("/api/json", {
-    method: "POST",
-    body: JSON.stringify({
-      addedImgFp: imgFp
-    })
-  });
-  return response.json();
-};
-
 const AIArtPage = () => {
   const [prompt, setPrompt] = useState("");
-
   const [imageFPs, setImgFilePaths] = useState([]);
   const [currentJSON, setCurrentJSON] = useState([]);
   const searchParams = useSearchParams();
@@ -61,6 +50,22 @@ const AIArtPage = () => {
 
   const handleClearClick = () => {
     setPrompt("");
+  };
+  const addImage = async (imgFp) => {
+    const response = await fetch("/api/json", {
+      method: "POST",
+      body: JSON.stringify({
+        addedImgFp: imgFp
+      })
+    });
+
+    if (response.ok) {
+      toast.success("🔥🖼️✨Image successfully added!");
+      return response.json();
+    } else {
+      toast.error("Error adding image to collection");
+      throw new Error("Image upload failed");
+    }
   };
 
   async function onSubmit(e) {
@@ -85,10 +90,9 @@ const AIArtPage = () => {
     getImages();
   }, []);
 
-  //adding toaster now!
-
   return (
     <MainContainer>
+      <Toaster position="top-center" />
       <div className={styles.aiGenContainer}>
         <div className={styles.aiGenContent}>
           <div className={styles.promptContainer}>
