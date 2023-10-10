@@ -1,7 +1,7 @@
 import fs from "fs";
 import { readFile } from "fs/promises";
 import { join } from "path";
-import { getImgsFilePaths } from "../../../../services/images";
+import { getGenImgsFilePaths } from "../../../../services/images";
 
 // also add preset Style in here
 export async function POST(request) {
@@ -24,7 +24,6 @@ export async function POST(request) {
     seed: 0,
     cfg_scale: 5,
     samples: 4,
-    style_preset: "",
     text_prompts: [
       {
         text: prompt,
@@ -51,7 +50,7 @@ export async function POST(request) {
 
   const responseJSON = await response.json();
 
-  const currentImgsFilePaths = await getImgsFilePaths();
+  const currentImgsFilePaths = await getGenImgsFilePaths();
   const amountCurrentImages = currentImgsFilePaths.length + 1;
 
   const writeImages = responseJSON.artifacts.map(async (image, index) => {
@@ -90,7 +89,7 @@ export async function POST(request) {
   fs.writeFileSync(jsonFilePath, JSON.stringify(jsonData));
 
   await Promise.all(writeImages, writeJSON);
-  const newImgsFilePaths = await getImgsFilePaths();
+  const newImgsFilePaths = await getGenImgsFilePaths();
 
   return new Response(
     JSON.stringify({
@@ -101,7 +100,7 @@ export async function POST(request) {
 }
 
 export async function GET(request) {
-  const currentImgsFilePaths = await getImgsFilePaths();
+  const currentImgsFilePaths = await getGenImgsFilePaths();
 
   return new Response(
     JSON.stringify({

@@ -1,10 +1,10 @@
 const fs = require("fs");
 const path = require("path");
-const generatedImagesPath = path.resolve("./public/output/genImgs/");
+const collectionPath = path.resolve("./public/frontmania-collection/");
 
-export const getGenImgsFilePaths = async () => {
+export const getCollectionImgsFPs = async () => {
   return new Promise((resolve, reject) => {
-    fs.readdir(generatedImagesPath, (err, files) => {
+    fs.readdir(collectionPath, (err, files) => {
       if (err) {
         console.error("Error reading the output folder:", err);
         return;

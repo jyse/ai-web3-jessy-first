@@ -30,7 +30,7 @@ const stylesPrompt = [
 ];
 
 const spStyle = () => {
-  console.log("sp Style clicked upon 🐲🐲🐲🐲");
+  console.log("🤖🖌️ You choose the style of", chosenStyle);
 };
 
 const OverviewPage = () => {

@@ -29,8 +29,7 @@ const getNewImages = async (prompt) => {
   const response = await fetch("/api/images", {
     method: "POST",
     body: JSON.stringify({
-      prompt: prompt,
-      style: chosenStyle
+      prompt: prompt
     })
   });
 
@@ -39,6 +38,17 @@ const getNewImages = async (prompt) => {
 
 const styleGenImgsToAdd = {
   borderRadius: "4px"
+};
+
+const addImage = async (imgFp) => {
+  console.log("🎨🤖 Adding image to collection");
+  const response = await fetch("/api/json", {
+    method: "POST",
+    body: JSON.stringify({
+      addedImgFp: imgFp
+    })
+  });
+  return response.json();
 };
 
 const AIArtPage = () => {
@@ -114,15 +124,20 @@ const AIArtPage = () => {
                   <div className={styles.recentPrompt}>{item.prompt}</div>
                   <RowGallery>
                     {item.images.map((imgFp, imageIndex) => (
-                      <Image
-                        priority={true}
+                      <div
+                        className={styles.addImage}
+                        onClick={() => addImage(imgFp)}
                         key={imageIndex}
-                        src={imgFp}
-                        width={250}
-                        height={250}
-                        alt={"Text"}
-                        style={styleGenImgsToAdd}
-                      />
+                      >
+                        <Image
+                          priority={true}
+                          src={imgFp}
+                          width={250}
+                          height={250}
+                          alt={"Text"}
+                          style={styleGenImgsToAdd}
+                        />
+                      </div>
                     ))}
                   </RowGallery>
                 </div>
