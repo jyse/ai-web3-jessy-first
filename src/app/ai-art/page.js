@@ -60,7 +60,7 @@ const AIArtPage = () => {
     });
 
     if (response.ok) {
-      toast.success("🔥🖼️✨Images succesfully added!", {
+      toast.success("🔥🖼️✨Image succesfully added!", {
         duration: 8000
       });
 
