@@ -44,13 +44,15 @@ const OverviewPage = () => {
           </div>
           <div className={styles.stepsContainer}>
             <div className={styles.step}>
-              <div className={styles.stepIntro}>
-                <div className={styles.icon}>🎨</div>
-                <div className={styles.title}>
-                  <h2>Create art with AI</h2>
-                  <h3>Describe what you want and generate new images.</h3>
+              <Link href="/ai-art">
+                <div className={styles.stepIntro}>
+                  <div className={styles.icon}>🎨</div>
+                  <div className={styles.title}>
+                    <h2>Create art with AI</h2>
+                    <h3>Describe what you want and generate new images.</h3>
+                  </div>
                 </div>
-              </div>
+              </Link>
               <div className={styles.stepContent}>
                 <div className={styles.gridAiStyles}>
                   {stylesPrompt?.map((styleForPrompt, index) => {
@@ -98,13 +100,15 @@ const OverviewPage = () => {
               </div>
             </div>
             <div className={styles.step}>
-              <div className={styles.stepIntro}>
-                <div className={styles.icon}>🖼️</div>
-                <div className={styles.title}>
-                  <h2> Turn art into a NFT collection</h2>
-                  <h3> Add more images to your current collection</h3>
+              <Link href="/collection">
+                <div className={styles.stepIntro}>
+                  <div className={styles.icon}>🖼️</div>
+                  <div className={styles.title}>
+                    <h2> Turn art into a NFT collection</h2>
+                    <h3> Add more images to your current collection</h3>
+                  </div>
                 </div>
-              </div>
+              </Link>
               <div className={styles.stepContent}>
                 <RowGallery>
                   {[1, 2, 3, 4].map((imageIndex) => {

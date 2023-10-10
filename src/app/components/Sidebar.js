@@ -8,7 +8,8 @@ const sideBarDetails = [
   { route: "/", items: ["Overview", "Resources"] },
   {
     route: "/collections",
-    items: ["Current collection", "Published collections"]
+    // change this title maybe
+    items: ["Current collection"]
   },
   { route: "/resources", items: ["Overview", "Resources"] }
 ];
