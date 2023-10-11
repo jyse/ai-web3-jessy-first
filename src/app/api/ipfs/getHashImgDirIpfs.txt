@@ -1,0 +1,23 @@
+const collImagesPath = path.resolve("./public/frontmania-collection/");
+
+const uploadImgsToIpfs = async () => {
+  const options = {
+    pinataMetadata: {
+      name: "Frontmania",
+      keyvalues: {
+        folder: "NFTsFolder",
+        timestamp: Date.now()
+      }
+    },
+    pinataOptions: {
+      cidVersion: 0
+    }
+  };
+
+  try {
+    const ipfsNFTDir = await pinata.pinFromFS(collImagesPath, options);
+    
+  } catch (error) {
+    console.log("Error when uploading images to Pinata")
+  }
+};

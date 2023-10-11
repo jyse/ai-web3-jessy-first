@@ -25,6 +25,9 @@ const CollectionPage = () => {
   const [genImgFPs, setGenImgFPs] = useState([]);
   const [genJSON, setGenJSON] = useState([]);
   const [amount, setAmount] = useState(0);
+  const [collectionIPFS, setCollectionIPSF] = useState(false);
+  const [readyForSM, setReadyForSM] = useState(false);
+  const [CID, setCID] = useState("");
 
   const addImage = async (imgFp) => {
     const result = await makeRequest("/api/gen-json", "POST", {
@@ -58,6 +61,52 @@ const CollectionPage = () => {
     getImages();
   }, []);
 
+  const uploadToIpfs = async () => {
+    toast.loading("🔥Uploading to IPFS");
+    try {
+      let jsonDir = await makeRequest("/api/ipfs", "POST", {
+        collection: collJSON
+      });
+      console.log(
+        jsonDir,
+        "what is in IPFSJSON DIR 🔥🔥🔥🔥🔥🔥🔥🍬🍬🍬🍬🍬🍬"
+      );
+      if (jsonDir?.IpfsHash) {
+        console.log(
+          "🔥Retrieved CID of collection JSON 📝: ",
+          jsonDir.IpfsHash
+        );
+      }
+    } catch (error) {
+      console.log("👹✨ Error at retrieving CID of JSON at IPFS");
+    }
+  };
+
+  useEffect(() => {
+    // CID? Proof that the contract has succesfully been deployed
+    // setstate regarding the toaster and referring to the market place if possible - maybe set a timer
+  }, []);
+
+  useEffect(() => {
+    if (collectionIPFS) {
+      toast.success("✅ Upload to IPFS was succesful!", {
+        duration: 6000
+      });
+      // disable upload IPFS button
+      setIPFSButton(false);
+      toast.info("Now it's time to deploy the smart contract!");
+      setReadyForSM(true);
+      // activate the deploy button
+    }
+  }, [collectionIPFS]);
+
+  useEffect(() => {
+    if (collectionIPFS) {
+      const timer = setTimeout(() => setReadyForSM(true), 2500);
+      return () => clearTimeout(timer);
+    }
+  }, [collectionIPFS]);
+
   return (
     <MainContainer>
       <Toaster position="top-center" />
@@ -70,7 +119,12 @@ const CollectionPage = () => {
                   <h2> 🔥🎨 AI Art Frontmania Collection </h2>
                   <p>{amount > 0 ? `👉 ${amount} Images added` : ""}</p>
                 </div>
-                <div className={styles.upload}>Upload to IPFS</div>
+                <div className={styles.upload} onClick={() => uploadToIpfs()}>
+                  Upload to IPFS
+                </div>
+                <div className={styles.deploy} onClick={() => deploySm()}>
+                  Deploy
+                </div>
               </div>
               <div className={styles.contentContainer}>
                 <RowGallery>
@@ -78,7 +132,7 @@ const CollectionPage = () => {
                     <div className={styles.addImage} key={index}>
                       <Image
                         priority={true}
-                        src={obj.image}
+                        src={obj.imageFile}
                         width={250}
                         height={250}
                         alt={"Text"}
