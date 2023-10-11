@@ -30,7 +30,7 @@ const uploadImgsToIpfs = async (hashImgDirIpfs) => {
     console.log(ipfsNFTDir, "what is in ipfsNFT DIRECTORY? 🔥🐲");
     return ipfsNFTDir.IpfsHash;
   } catch (error) {
-    console.log(error("Error uploading images to IPFS:", error));
+    console.log("Error uploading images to IPFS");
   }
 };
 
@@ -66,8 +66,7 @@ const uploadJSONtoIpfs = async (hashImgDirIpfs) => {
 
     return jsonResult.IpfsHash;
   } catch (error) {
-    console.error("Error reading/updating JSON file:", error);
-    throw error;
+    console.log("Error reading/updating JSON file");
   }
 };
 

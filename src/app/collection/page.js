@@ -81,8 +81,6 @@ const CollectionPage = () => {
       }
     } catch (error) {
       toast.error("👹✨ Error at retrieving CID of JSON at IPFS");
-    } finally {
-      setUpLoading(false); // Set uploading to false after success or failure
     }
   };
 
@@ -92,7 +90,7 @@ const CollectionPage = () => {
     try {
       let contractDetails = await makeRequest("/api/contract", "POST", {});
     } catch (error) {
-      console.error("👹✨ Error deploying the smart contract");
+      console.log("👹✨ Error deploying the smart contract");
     }
 
     setContractDetails(contractDetails);
