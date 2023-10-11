@@ -24,18 +24,17 @@ const CollectionPage = () => {
   const [collJSON, setCollJSON] = useState([]);
   const [genImgFPs, setGenImgFPs] = useState([]);
   const [genJSON, setGenJSON] = useState([]);
+  const [amount, setAmount] = useState(0);
 
   const addImage = async (imgFp) => {
-    const response = await makeRequest("/api/gen-json", "POST", {
+    const result = await makeRequest("/api/gen-json", "POST", {
       addedImgFp: imgFp
     });
 
-    if (response.ok) {
+    if (result.success) {
       toast.success("🔥🖼️✨Image succesfully added!", {
         duration: 8000
       });
-
-      return response.json();
     } else {
       toast.error("Error adding image to collection");
       throw new Error("Image upload failed");
@@ -47,11 +46,12 @@ const CollectionPage = () => {
       const genImgFPs = await makeRequest("/api/images");
       setGenImgFPs(genImgFPs);
       const genJSON = await makeRequest("/api/gen-json");
-      console.log(genJSON, "where is the genJSON here? 🐲🐲🐲🐲🐲🐲🐲🐲");
       setGenJSON(genJSON.data.reverse());
       const collImgFPs = await makeRequest("/api/collection");
       setCollImgFPs(collImgFPs);
       const collJSON = await makeRequest("/api/collection-json");
+      const amountCollImgs = collJSON.data.length;
+      setAmount(amountCollImgs);
       setCollJSON(collJSON.data.reverse());
     }
     getImages();
@@ -63,25 +63,24 @@ const CollectionPage = () => {
       <div className={styles.mainPageContent}>
         <div className={styles.mainContent}>
           <div className={styles.sectionContainer}>
-            <div className={styles.recentGenTitle}>
+            <div className={styles.sectionTitle}>
               <h2> 🔥🎨 AI Art Frontmania Collection </h2>
+              <p>{amount > 0 ? `👉 ${amount} Images added` : ""}</p>
             </div>
             <div className={styles.contentContainer}>
               <RowGallery>
-                {collJSON && collJSON.length > 0
-                  ? collJSON.map((obj, index) => (
-                      <div className={styles.addImage} key={index}>
-                        <Image
-                          priority={true}
-                          src={obj.image}
-                          width={250}
-                          height={250}
-                          alt={"Text"}
-                          style={styleGenImgsToAdd}
-                        />
-                      </div>
-                    ))
-                  : ""}
+                {collJSON?.map((obj, index) => (
+                  <div className={styles.addImage} key={index}>
+                    <Image
+                      priority={true}
+                      src={obj.image}
+                      width={250}
+                      height={250}
+                      alt={"Text"}
+                      style={styleGenImgsToAdd}
+                    />
+                  </div>
+                ))}
               </RowGallery>
             </div>
           </div>
