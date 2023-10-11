@@ -10,14 +10,15 @@ const pinata = new pinataSDK({
 });
 
 const collImagesPath = path.resolve("./public/frontmania-collection/");
+const jsonFilePath = join(process.cwd(), "public", "JSON", "collection.json");
 
 const res = await pinata.testAuthentication();
 console.log(res);
 
-const uploadImgsToIpfs = async () => {
+const uploadImgsToIpfs = async (hashImgDirIpfs) => {
   const options = {
     pinataMetadata: {
-      name: "Frontmania"
+      name: hashImgDirIpfs
     },
     pinataOptions: {
       cidVersion: 0
@@ -26,6 +27,7 @@ const uploadImgsToIpfs = async () => {
 
   try {
     const ipfsNFTDir = await pinata.pinFromFS(collImagesPath, options);
+    console.log(ipfsNFTDir, "what is in ipfsNFT DIRECTORY? 🔥🐲");
     return ipfsNFTDir.IpfsHash;
   } catch (error) {
     console.log(error("Error uploading images to IPFS:", error));
@@ -43,6 +45,7 @@ const uploadJSONtoIpfs = async (hashImgDirIpfs) => {
   try {
     const collectionContent = await readFile(collectionFilePath, "utf-8");
     const collectionData = JSON.parse(collectionContent);
+    console.log(collectionData, " what is in collectionData?");
 
     for (let i = 0; i < collectionData.length; i++) {
       const fileName = `${i + 1}.png`;
@@ -58,6 +61,8 @@ const uploadJSONtoIpfs = async (hashImgDirIpfs) => {
     };
 
     const jsonResult = await pinata.pinJSONToIPFS(collectionData, jsonOptions);
+    console.log(jsonResult, "what is with json Result? 🔥");
+    console.log("Uploaded updated JSON data to IPFS:", jsonResult);
 
     return jsonResult.IpfsHash;
   } catch (error) {
@@ -67,7 +72,12 @@ const uploadJSONtoIpfs = async (hashImgDirIpfs) => {
 };
 
 export async function POST(request) {
-  const imgHash = await uploadImgsToIpfs();
+  const { collection } = await request.json();
+
+  const hashImgDirIpfs = "QmNSJGcaLPuKPxoD3kfhQXJPbrCBM8W5HyFKWWn6aahSU4";
+  const hashJSONDirIpfs = "QmTNQ41NzVRghB36TtNaRZ8xtJ1SqeMn3oSjS75MNo1zbL;";
+
+  const imgHash = await uploadImgsToIpfs(hashImgDirIpfs);
   const jsonHash = await uploadJSONtoIpfs(imgHash);
   console.log(jsonHash, "JSON HASH");
 

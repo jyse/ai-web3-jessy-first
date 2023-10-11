@@ -26,7 +26,7 @@ const CollectionPage = () => {
   const [genJSON, setGenJSON] = useState([]);
   const [amount, setAmount] = useState(0);
   const [collectionIPFS, setCollectionIPSF] = useState(false);
-  const [readyForSM, setReadyForSM] = useState(false);
+  const [uploading, setUpLoading] = useState(false);
   const [CID, setCID] = useState("");
 
   const addImage = async (imgFp) => {
@@ -38,7 +38,7 @@ const CollectionPage = () => {
       toast.success("🔥🖼️✨Image succesfully added!", {
         duration: 8000
       });
-      setCollJSON([{ image: imgFp }, ...collJSON]);
+      setCollJSON([{ imageFile: imgFp }, ...collJSON]);
     } else {
       toast.error("Error adding image to collection");
       throw new Error("Image upload failed");
@@ -62,43 +62,38 @@ const CollectionPage = () => {
   }, []);
 
   const uploadToIpfs = async () => {
-    toast.loading("🔥Uploading to IPFS");
+    // Display a loading toast while uploading to IPFS.
+    const loadingToast = toast.loading("🔥Uploading to IPFS");
+
     try {
-      let jsonDir = await makeRequest("/api/ipfs", "POST", {
-        collection: collJSON
-      });
-      console.log(
-        jsonDir,
-        "what is in IPFSJSON DIR 🔥🔥🔥🔥🔥🔥🔥🍬🍬🍬🍬🍬🍬"
-      );
-      if (jsonDir?.IpfsHash) {
-        console.log(
-          "🔥Retrieved CID of collection JSON 📝: ",
-          jsonDir.IpfsHash
-        );
+      let jsonDir = await makeRequest("/api/ipfs", "POST", {});
+      toast.dismiss(loadingToast);
+
+      if (jsonDir) {
+        setCID(jsonDir);
+
+        toast.success(`✅✨ Succesful upload to IPFS!!📝`, {
+          duration: 6000
+        });
+        deploySm(jsonDir);
+      } else {
+        toast.error("❌ No IPFS hash found for the collection JSON");
       }
     } catch (error) {
-      console.log("👹✨ Error at retrieving CID of JSON at IPFS");
+      toast.error("👹✨ Error at retrieving CID of JSON at IPFS");
+    } finally {
+      setUpLoading(false); // Set uploading to false after success or failure
     }
+  };
+
+  const deploySm = async (jsonDir) => {
+    const loadingToast = toast.loading("📝😃✨Deploying contract...");
   };
 
   useEffect(() => {
     // CID? Proof that the contract has succesfully been deployed
     // setstate regarding the toaster and referring to the market place if possible - maybe set a timer
   }, []);
-
-  useEffect(() => {
-    if (collectionIPFS) {
-      toast.success("✅ Upload to IPFS was succesful!", {
-        duration: 6000
-      });
-      // disable upload IPFS button
-      setIPFSButton(false);
-      toast.info("Now it's time to deploy the smart contract!");
-      setReadyForSM(true);
-      // activate the deploy button
-    }
-  }, [collectionIPFS]);
 
   useEffect(() => {
     if (collectionIPFS) {
@@ -119,11 +114,16 @@ const CollectionPage = () => {
                   <h2> 🔥🎨 AI Art Frontmania Collection </h2>
                   <p>{amount > 0 ? `👉 ${amount} Images added` : ""}</p>
                 </div>
-                <div className={styles.upload} onClick={() => uploadToIpfs()}>
-                  Upload to IPFS
-                </div>
-                <div className={styles.deploy} onClick={() => deploySm()}>
-                  Deploy
+                <div className={styles.stepsNFT}>
+                  <button
+                    className={styles.upload}
+                    onClick={() => uploadToIpfs()}
+                  >
+                    Upload to IPFS
+                  </button>
+                  <button className={styles.deploy} onClick={() => deploySm()}>
+                    Deploy
+                  </button>
                 </div>
               </div>
               <div className={styles.contentContainer}>

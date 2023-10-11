@@ -38,7 +38,6 @@ const addImageToCollection = async (imgFp) => {
 
       const addedImgObj = {
         prompt: promptDetails.prompt,
-        image: "",
         imageFile: imgFp
       };
 

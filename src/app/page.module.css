@@ -303,11 +303,38 @@
   padding: 15px 15px 10px 15px;
 }
 
-.upload {
-  background-color: var(--button-primary);
-  padding: 10px;
-  border-radius: 4px;
+.stepsNFT {
+  display: flex;
+  align-items: center;
+  gap: 30px;
 }
+
+.stepsNFT button {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+}
+
+.upload {
+  background-color: var(--highlight-primary);
+  color: #fff; /* White text color */
+}
+
+.deploy {
+  background-color: var(--highlight-secondary);
+  color: #fff; /* White text color */
+}
+
+/* .upload:disabled {
+  background-color: var(--background-secondary);
+  cursor: not-allowed;
+}
+
+.deploy:disabled {
+  background-color: var(--background-secondary);
+} */
 
 .contentContainer {
   padding: 15px;
