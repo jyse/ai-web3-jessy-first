@@ -38,7 +38,7 @@ const addImageToCollection = async (imgFp) => {
 
       const addedImgObj = {
         prompt: promptDetails.prompt,
-        imageFile: imgFp
+        imageFile: imgFp,
       };
 
       collectionData.push(addedImgObj);
@@ -47,7 +47,7 @@ const addImageToCollection = async (imgFp) => {
       const currentImgsFilePaths = await getCollectionImgsFPs();
       const amountCurrentImages = currentImgsFilePaths.length + 1;
 
-      let imageIndex = amountCurrentImages + 1;
+      let imageIndex = amountCurrentImages;
       let imageFilePath = `./public/frontmania-collection/images/${imageIndex}.png`;
 
       const base64Image = await getImageBase64(imgFp);
@@ -61,13 +61,13 @@ const addImageToCollection = async (imgFp) => {
     } else {
       return {
         success: false,
-        message: "👹! Image already exists in the collection."
+        message: "👹! Image already exists in the collection.",
       };
     }
   } catch (error) {
     return {
       success: false,
-      message: "An error occurred while processing the request."
+      message: "An error occurred while processing the request.",
     };
   }
 };
@@ -79,7 +79,7 @@ export async function GET() {
 
   return new Response(
     JSON.stringify({
-      data: jsonData
+      data: jsonData,
     })
   );
 }
