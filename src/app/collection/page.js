@@ -4,17 +4,13 @@ import MainContainer from "../components/MainContainer";
 import RowGallery from "../components/RowGallery";
 import styles from "../page.module.css";
 import Image from "next/image";
+import toast, { Toaster } from "react-hot-toast";
 
-const getCollectionImages = async () => {
-  const response = await fetch("/api/collection", {
-    method: "GET"
-  });
-  return response.json();
-};
-
-const getCollectionJSON = async () => {
-  const response = await fetch("/api/collection-json", {
-    method: "GET"
+const makeRequest = async (url, method = "GET", body) => {
+  const response = await fetch(url, {
+    method,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body)
   });
   return response.json();
 };
@@ -24,25 +20,46 @@ const styleGenImgsToAdd = {
 };
 
 const CollectionPage = () => {
-  const [imageFPs, setImgFilePaths] = useState([]);
-  const [currentGenJSON, setCurrentGenJSON] = useState([]);
-  const [collectionJSON, setCollectionJSON] = useState([]);
-  const [getImgsJSON, setGenImgsJson] = useState([]);
+  const [collImgFPs, setCollImgFPs] = useState([]);
+  const [collJSON, setCollJSON] = useState([]);
+  const [genImgFPs, setGenImgFPs] = useState([]);
+  const [genJSON, setGenJSON] = useState([]);
+
+  const addImage = async (imgFp) => {
+    const response = await makeRequest("/api/gen-json", "POST", {
+      addedImgFp: imgFp
+    });
+
+    if (response.ok) {
+      toast.success("🔥🖼️✨Image succesfully added!", {
+        duration: 8000
+      });
+
+      return response.json();
+    } else {
+      toast.error("Error adding image to collection");
+      throw new Error("Image upload failed");
+    }
+  };
 
   useEffect(() => {
     async function getImages() {
-      const currentImgFPs = await getCollectionImages();
-      setImgFilePaths(currentImgFPs);
-      const currentJSONImgs = await getCollectionJSON();
-      const jsonData = currentJSONImgs.data.reverse();
-      setCollectionJSON(jsonData);
-      console.log(collectionJSON, "what is current JSON here? ");
+      const genImgFPs = await makeRequest("/api/images");
+      setGenImgFPs(genImgFPs);
+      const genJSON = await makeRequest("/api/gen-json");
+      console.log(genJSON, "where is the genJSON here? 🐲🐲🐲🐲🐲🐲🐲🐲");
+      setGenJSON(genJSON.data.reverse());
+      const collImgFPs = await makeRequest("/api/collection");
+      setCollImgFPs(collImgFPs);
+      const collJSON = await makeRequest("/api/collection-json");
+      setCollJSON(collJSON.data.reverse());
     }
     getImages();
   }, []);
 
   return (
     <MainContainer>
+      <Toaster position="top-center" />
       <div className={styles.mainPageContent}>
         <div className={styles.mainContent}>
           <div className={styles.sectionContainer}>
@@ -51,26 +68,28 @@ const CollectionPage = () => {
             </div>
             <div className={styles.contentContainer}>
               <RowGallery>
-                {collectionJSON?.map((obj, index) => (
-                  <div className={styles.addImage} key={index}>
-                    <Image
-                      priority={true}
-                      src={obj.image}
-                      width={250}
-                      height={250}
-                      alt={"Text"}
-                      style={styleGenImgsToAdd}
-                    />
-                  </div>
-                ))}
+                {collJSON && collJSON.length > 0
+                  ? collJSON.map((obj, index) => (
+                      <div className={styles.addImage} key={index}>
+                        <Image
+                          priority={true}
+                          src={obj.image}
+                          width={250}
+                          height={250}
+                          alt={"Text"}
+                          style={styleGenImgsToAdd}
+                        />
+                      </div>
+                    ))
+                  : ""}
               </RowGallery>
             </div>
           </div>
           <div className={styles.sectionContainer}>
             <div className={styles.sectionTitle}>
-              <h2> Recent Generations </h2>
+              <h2> 🔥✅ Add more images! </h2>
             </div>
-            {currentGenJSON?.map((item, index) => {
+            {genJSON?.map((item, index) => {
               return (
                 <div className={styles.contentContainer} key={index}>
                   <div className={styles.recentPrompt}>{item.prompt}</div>

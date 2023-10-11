@@ -20,18 +20,6 @@ const makeRequest = async (url, method = "GET", body) => {
   return response.json();
 };
 
-const getNewImages = async (prompt) => {
-  console.log("🎨🤖 Generating your images...");
-  const response = await fetch("/api/images", {
-    method: "POST",
-    body: JSON.stringify({
-      prompt: prompt
-    })
-  });
-
-  return response.json();
-};
-
 const styleGenImgsToAdd = {
   borderRadius: "4px"
 };
@@ -48,16 +36,14 @@ const AIArtPage = () => {
   };
 
   const addImage = async (imgFp) => {
-    const response = await makeRequest("/api/gen-json", "POST", {
+    const result = await makeRequest("/api/gen-json", "POST", {
       addedImgFp: imgFp
     });
 
-    if (response.ok) {
+    if (result.success) {
       toast.success("🔥🖼️✨Image succesfully added!", {
         duration: 8000
       });
-
-      return response.json();
     } else {
       toast.error("Error adding image to collection");
       throw new Error("Image upload failed");

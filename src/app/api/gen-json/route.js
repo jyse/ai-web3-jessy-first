@@ -38,7 +38,7 @@ const addImageToCollection = async (imgFp) => {
 
       const addedImgObj = {
         prompt: promptDetails.prompt,
-        image: imgFp
+        images: imgFp
       };
 
       collectionData.push(addedImgObj);
@@ -56,7 +56,6 @@ const addImageToCollection = async (imgFp) => {
         imageFilePath,
         Buffer.from(base64Image, "base64")
       );
-      // await fs.promises.writeFile(imageFilePath, base64Image, "base64");
 
       return { success: true, message: "💥✨Image added to the collection." };
     } else {
@@ -87,7 +86,13 @@ export async function GET() {
 
 export async function POST(request) {
   const { addedImgFp } = await request.json();
-  const newCollection = await addImageToCollection(addedImgFp);
-  console.log("🐲🥷✅✨ Image added");
-  return new Response(JSON.stringify({ data: newCollection }));
+  const result = await addImageToCollection(addedImgFp);
+
+  if (result.succes) {
+    console.log("🐲🥷✅✨ Image added");
+  } else {
+    console.error("An error occurred while adding an image");
+  }
+
+  return new Response(JSON.stringify(result));
 }
