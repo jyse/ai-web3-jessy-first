@@ -62,18 +62,18 @@ const CollectionPage = () => {
   }, []);
 
   const uploadToIpfs = async () => {
-    // Display a loading toast while uploading to IPFS.
     const loadingToast = toast.loading("🔥Uploading to IPFS");
 
     try {
       let jsonDir = await makeRequest("/api/ipfs", "POST", {});
+      console.log(jsonDir, "what is the hash of the JSON directory? ");
       toast.dismiss(loadingToast);
 
       if (jsonDir) {
         setCID(jsonDir);
 
         toast.success(`✅✨ Succesful upload to IPFS!!📝`, {
-          duration: 6000
+          duration: 5000
         });
         deploySm(jsonDir);
       } else {
@@ -85,14 +85,8 @@ const CollectionPage = () => {
   };
 
   const deploySm = async (jsonDir) => {
-    toast.loading("📝😃✨Deploying contract...");
-
-    try {
-      let contractDetails = await makeRequest("/api/contract", "POST", {});
-    } catch (error) {
-      console.log("👹✨ Error deploying the smart contract");
-    }
-
+    // to create and deploy contract
+    // to deploy contract
     setContractDetails(contractDetails);
   };
 

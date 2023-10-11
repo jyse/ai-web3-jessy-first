@@ -48,7 +48,7 @@ const addImageToCollection = async (imgFp) => {
       const amountCurrentImages = currentImgsFilePaths.length + 1;
 
       let imageIndex = amountCurrentImages + 1;
-      let imageFilePath = `./public/frontmania-collection/${imageIndex}.png`;
+      let imageFilePath = `./public/frontmania-collection/images/${imageIndex}.png`;
 
       const base64Image = await getImageBase64(imgFp);
 

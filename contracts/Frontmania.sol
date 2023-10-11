@@ -1,56 +1,62 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.7;
+pragma solidity ^0.8.20;
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
+import "@openzeppelin/contracts@5.0.0/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts@5.0.0/token/ERC721/extensions/ERC721Enumerable.sol";
+import "@openzeppelin/contracts@5.0.0/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts@5.0.0/access/Ownable.sol";
 
+contract Frontmania is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
+    uint256 private _nextTokenId;
 
-contract Frontmania is ERC721, ERC721Enumerable, Ownable {
-using Counters for Counters.Counter;
+    constructor(address initialOwner)
+        ERC721("Frontmania", "FM")
+        Ownable(initialOwner)
+    {}
 
-    Counters.Counter private _tokenIdCounter;
-
-    constructor() ERC721("Frontmania", "FM") {}
-
-    uint256 maxSupply = 13;
-    mapping (uint256 => string) private _tokenURIs;
-
-    function _baseURI(string memory CID) internal pure returns (string memory) {
-        return string(abi.encodePacked("ipfs://", CID, "/"));
+    function _baseURI() internal pure override returns (string memory) {
+        return "ipfs://QmWkv9r3XxoS6GhRSsXsE6mizoEi2FevU2E6b1FuVmTcCy/";
     }
 
-    function safeMint(string memory CID, uint256 value) public payable virtual {
-        require(msg.value >= value, "More money please");
-        require(totalSupply() <= maxSupply, "You have reached the limit");
-        
-        uint256 tokenId = _tokenIdCounter.current();
-        _tokenIdCounter.increment();
-        _safeMint(msg.sender, tokenId);
-        _tokenURIs[tokenId] = CID; 
+    function safeMint(address to, string memory uri) public payable  {
+        require(msg.value >= 0.001 ether, "More money please");
+        uint256 tokenId = _nextTokenId++;
+        _safeMint(to, tokenId);
+        _setTokenURI(tokenId, uri);
     }
 
-    function _beforeTokenTransfer(address from, address to, uint256 tokenId, uint256 batchSize)
+    // The following functions are overrides required by Solidity.
+
+    function _update(address to, uint256 tokenId, address auth)
+        internal
+        override(ERC721, ERC721Enumerable)
+        returns (address)
+    {
+        return super._update(to, tokenId, auth);
+    }
+
+    function _increaseBalance(address account, uint128 value)
         internal
         override(ERC721, ERC721Enumerable)
     {
-        super._beforeTokenTransfer(from, to, tokenId, batchSize);
+        super._increaseBalance(account, value);
+    }
+
+    function tokenURI(uint256 tokenId)
+        public
+        view
+        override(ERC721, ERC721URIStorage)
+        returns (string memory)
+    {
+        return super.tokenURI(tokenId);
     }
 
     function supportsInterface(bytes4 interfaceId)
         public
         view
-        override(ERC721, ERC721Enumerable)
+        override(ERC721, ERC721Enumerable, ERC721URIStorage)
         returns (bool)
     {
         return super.supportsInterface(interfaceId);
-    }
-
-    function tokenURI(uint256 tokenId) public view override virtual returns (string memory) {
-        _requireMinted(tokenId);
-        string memory baseURI = _baseURI(_tokenURIs[tokenId]);
-        return bytes(baseURI).length > 0 ? string(abi.encodePacked(baseURI, Strings.toString(tokenId), ".json")) : "";
     }
 }
