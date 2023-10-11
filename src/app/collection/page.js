@@ -26,8 +26,8 @@ const CollectionPage = () => {
   const [genJSON, setGenJSON] = useState([]);
   const [amount, setAmount] = useState(0);
   const [collectionIPFS, setCollectionIPSF] = useState(false);
-  const [uploading, setUpLoading] = useState(false);
   const [CID, setCID] = useState("");
+  const [contractDetails, setContractDetails] = useState("");
 
   const addImage = async (imgFp) => {
     const result = await makeRequest("/api/gen-json", "POST", {
@@ -87,20 +87,16 @@ const CollectionPage = () => {
   };
 
   const deploySm = async (jsonDir) => {
-    const loadingToast = toast.loading("📝😃✨Deploying contract...");
-  };
+    toast.loading("📝😃✨Deploying contract...");
 
-  useEffect(() => {
-    // CID? Proof that the contract has succesfully been deployed
-    // setstate regarding the toaster and referring to the market place if possible - maybe set a timer
-  }, []);
-
-  useEffect(() => {
-    if (collectionIPFS) {
-      const timer = setTimeout(() => setReadyForSM(true), 2500);
-      return () => clearTimeout(timer);
+    try {
+      let contractDetails = await makeRequest("/api/contract", "POST", {});
+    } catch (error) {
+      console.error("👹✨ Error deploying the smart contract");
     }
-  }, [collectionIPFS]);
+
+    setContractDetails(contractDetails);
+  };
 
   return (
     <MainContainer>
