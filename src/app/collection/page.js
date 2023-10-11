@@ -35,6 +35,7 @@ const CollectionPage = () => {
       toast.success("🔥🖼️✨Image succesfully added!", {
         duration: 8000
       });
+      setCollJSON([{ image: imgFp }, ...collJSON]);
     } else {
       toast.error("Error adding image to collection");
       throw new Error("Image upload failed");
