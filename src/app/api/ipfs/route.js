@@ -6,7 +6,7 @@ const pinataSDK = require("@pinata/sdk");
 const pinata = new pinataSDK({
   pinataApiKey: "07e75d9d99d4c394c5bf",
   pinataSecretApiKey:
-    "0954cc888ceb9dd555634686ceef8f48a6c3b3ef508cd4d32b2349d7d0e49f4f"
+    "0954cc888ceb9dd555634686ceef8f48a6c3b3ef508cd4d32b2349d7d0e49f4f",
 });
 
 const uploadImgsToIpfs = async () => {
@@ -21,12 +21,12 @@ const uploadImgsToIpfs = async () => {
       name: "Images",
       keyvalues: {
         folder: "NFTsFolder",
-        timestamp: Date.now()
-      }
+        timestamp: Date.now(),
+      },
     },
     pinataOptions: {
-      cidVersion: 0
-    }
+      cidVersion: 0,
+    },
   };
 
   try {
@@ -85,13 +85,13 @@ const uploadJSONtoIpfs = async (imgHash) => {
         name: "JSON Objects",
         keyvalues: {
           folder: "JSON",
-          timestamp: Date.now()
-        }
+          timestamp: Date.now(),
+        },
       },
 
       pinataOptions: {
-        cidVersion: 0
-      }
+        cidVersion: 0,
+      },
     };
     const JSONPath = path.resolve("./public/frontmania-collection/json/");
     const jsonDirDetails = await pinata.pinFromFS(JSONPath, options);

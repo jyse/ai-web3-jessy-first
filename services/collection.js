@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const collectionPath = path.resolve("./public/frontmania-collection/images/");
+const collectionPath = path.resolve("./public/frontmania-collection/");
 
 export const getCollectionImgsFPs = async () => {
   return new Promise((resolve, reject) => {

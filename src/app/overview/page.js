@@ -6,30 +6,30 @@ import MainContainer from "../components/MainContainer";
 import RowGallery from "../components/RowGallery";
 
 const lastImageAIStyle = {
-  borderBottomRightRadius: "4px"
+  borderBottomRightRadius: "4px",
 };
 
 const firstImageAIStyle = {
-  borderBottomLeftRadius: "4px"
+  borderBottomLeftRadius: "4px",
 };
 
 const styleGenImgsToAdd = {
-  borderRadius: "4px"
+  borderRadius: "4px",
 };
 
 const stylesPrompt = [
   {
     name: "Stock Photos",
     path: "/spImgs/stockphotos/",
-    route: "/stockphotos"
+    route: "/stockphotos",
   },
   { name: "Characters", path: "/spImgs/characters/", route: "/characters" },
   { name: "Wallpapers", path: "/spImgs/wallpapers/", route: "/wallpapers" },
   { name: "Logos", path: "/spImgs/logos/", route: "/logos" },
-  { name: "Art", path: "/spImgs/art/", route: "/art" }
+  { name: "Art", path: "/spImgs/art/", route: "/art" },
 ];
 
-const spStyle = () => {
+const spStyle = (chosenStyle) => {
   console.log("🤖🖌️ You choose the style of", chosenStyle);
 };
 
@@ -68,7 +68,7 @@ const OverviewPage = () => {
                         <Link
                           href={{
                             pathname: "/ai-art",
-                            query: { style: chosenStyle }
+                            query: { style: chosenStyle },
                           }}
                         >
                           <div className={styles.styleBoxTitle}>
