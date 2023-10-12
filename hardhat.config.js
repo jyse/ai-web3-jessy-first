@@ -14,6 +14,7 @@ module.exports = {
   etherscan: {
     apiKey: process.env.POLYGONSCAN_API_KEY
   },
+  // Make sure that your solidity version matches with smart contract!
   solidity: {
     version: "0.8.9",
     settings: {

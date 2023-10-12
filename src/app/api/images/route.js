@@ -4,35 +4,35 @@ import { join } from "path";
 import { getGenImgsFilePaths } from "../../../../services/images";
 
 export async function POST(request) {
-  const path =
-    "https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/text-to-image";
+  // const path =
+  //   "https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/text-to-image";
 
-  const headers = {
-    Accept: "application/json",
-    Authorization: "Bearer sk-FXFbM5LnYaDjT0Gl89xi1qo3Bx8RvnDKiBXpQQzG58mQleKA",
-    "Content-Type": "application/json",
-  };
+  // const headers = {
+  //   Accept: "application/json",
+  //   Authorization: "Bearer sk-FXFbM5LnYaDjT0Gl89xi1qo3Bx8RvnDKiBXpQQzG58mQleKA",
+  //   "Content-Type": "application/json",
+  // };
 
-  const { prompt } = await request.json();
-  console.log("🔥🚀🎨 Sending prompt to DreamStudio API");
+  // const { prompt } = await request.json();
+  // console.log("🔥🚀🎨 Sending prompt to DreamStudio API");
 
-  const body = {
-    steps: 40,
-    width: 1024,
-    height: 1024,
-    seed: 0,
-    cfg_scale: 5,
-    samples: 4,
-    text_prompts: [
-      {
-        text: prompt,
-        weight: 1,
-      },
-      {
-        text: "(deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime:1.4), text, close up, cropped, out of frame, worst quality, low quality, jpeg artifacts, ugly, duplicate, morbid, mutilated, extra fingers, mutated hands, poorly drawn hands, poorly drawn face, mutation, deformed, blurry, dehydrated, bad anatomy, bad proportions, extra limbs, cloned face, disfigured, gross proportions, malformed limbs, missing arms, missing legs, extra arms, extra legs, fused fingers, too many fingers, long neck",
-        weight: -1,
-      },
-    ],
+  // const body = {
+  //   steps: 40,
+  //   width: 1024,
+  //   height: 1024,
+  //   seed: 0,
+  //   cfg_scale: 5,
+  //   samples: 4,
+  //   text_prompts: [
+  //     {
+  //       text: prompt,
+  //       weight: 1,
+  //     },
+  //     {
+  //       text: "(deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime:1.4), text, close up, cropped, out of frame, worst quality, low quality, jpeg artifacts, ugly, duplicate, morbid, mutilated, extra fingers, mutated hands, poorly drawn hands, poorly drawn face, mutation, deformed, blurry, dehydrated, bad anatomy, bad proportions, extra limbs, cloned face, disfigured, gross proportions, malformed limbs, missing arms, missing legs, extra arms, extra legs, fused fingers, too many fingers, long neck",
+  //       weight: -1,
+  //     },
+  //   ],
   };
 
   const response = await fetch(path, {

@@ -13,7 +13,7 @@ contract Frontmania is ERC1155, Ownable, ERC1155Supply {
 
     constructor(
     )
-        ERC1155("ipfs://QmcMPGZc3KW7euUNGnjKbV2Zc6SvS44KboJrgsHd1BCfZL/")
+        ERC1155("ipfs://QmdF5wTLXqDqYLQrqXSPThVfraZKEfGsVGEX9L3nGqbwaP/")
     {
     }
 
@@ -25,7 +25,7 @@ contract Frontmania is ERC1155, Ownable, ERC1155Supply {
         public
         payable
     {
-        require(msg.value == 0.001 ether * amount, "Please give more");
+        require(msg.value == 0.0001 ether, "Please give more");
 
         _mint(msg.sender, id, amount,"");
         emit NFTMinted(id, msg.sender, amount);

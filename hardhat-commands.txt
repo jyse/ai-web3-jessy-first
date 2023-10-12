@@ -1,0 +1,8 @@
+Just to show you guys!
+ npx hardhat compile
+  npx hardhat run --network polygon_mumbai scripts/deploy.js
+ you get contract address in console! DEPLOYED_CONTRACT_ADDRESS e.g. 👉 0x7f622B614F07353D9397544464f41B5eA81688cA
+ npx hardhat verify --network polygon_mumbai DEPLOYED_CONTRACT_ADDRESS
+
+🌐https://mumbai.polygonscan.com/address/<DEPLOYED_CONTRACT_ADDRESS>#code
+https://mumbai.polygonscan.com/address/0x7f622B614F07353D9397544464f41B5eA81688cA#code
