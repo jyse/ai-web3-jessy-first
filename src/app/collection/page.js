@@ -64,6 +64,7 @@ const CollectionPage = () => {
   const uploadToIpfs = async () => {
     try {
       let jsonDir = await makeRequest("/api/ipfs", "POST", {});
+      console.log(jsonDir, "what is in jsonDir?");
       toast.loading("🔥Uploading to IPFS");
       console.log(
         jsonDir,
