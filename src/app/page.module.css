@@ -19,6 +19,11 @@
   gap: 10px;
   font-family: var(--font-mono);
 }
+
+.connect {
+  padding-left: 15px;
+}
+
 .connect:hover {
   color: var(--highlight-secondary);
   cursor: pointer;
