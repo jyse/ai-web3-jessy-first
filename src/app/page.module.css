@@ -74,6 +74,18 @@
   max-width: 1150px;
 }
 
+.resourcesContainer {
+  min-width: 1024px;
+  width: fit-content;
+}
+
+.resourcesContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
 .overviewContainer {
   min-width: 1024px;
   width: fit-content;
