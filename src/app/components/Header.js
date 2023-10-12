@@ -12,13 +12,14 @@ const Header = () => {
         </Link>
         <div className={styles.menu}>
           <div className={styles.connect}>
-            <p>Discord</p>
+            <Link href="https://discord.gg/rKV6JBTT">
+              <p>Discord</p>
+            </Link>
           </div>
           <div className={styles.connect}>
-            <p>Connect</p>
-          </div>
-          <div className={styles.connect}>
-            <p>Newsletter</p>
+            <Link href="https://www.linkedin.com/in/jessy-the/">
+              <p>Connect</p>
+            </Link>
           </div>
         </div>
       </div>

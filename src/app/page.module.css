@@ -19,6 +19,11 @@
   gap: 10px;
   font-family: var(--font-mono);
 }
+
+.connect {
+  padding-left: 15px;
+}
+
 .connect:hover {
   color: var(--highlight-secondary);
   cursor: pointer;
@@ -72,6 +77,18 @@
   padding-left: 40px;
   padding-right: 40px;
   max-width: 1150px;
+}
+
+.resourcesContainer {
+  min-width: 1024px;
+  width: fit-content;
+}
+
+.resourcesContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
 }
 
 .overviewContainer {
