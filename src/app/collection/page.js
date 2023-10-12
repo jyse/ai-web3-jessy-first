@@ -70,7 +70,7 @@ const CollectionPage = () => {
         jsonDir,
         "what is the hash of the JSON directory? 🐲🐲🐲🐲🐲🐲🐲🐲🐲"
       );
-      toast.dismiss(loadingToast);
+      toast.dismiss();
 
       if (jsonDir) {
         setCID(jsonDir);
@@ -78,7 +78,6 @@ const CollectionPage = () => {
         toast.success(`✅✨ Succesful upload to IPFS!!📝`, {
           duration: 5000
         });
-        deploySm(jsonDir);
       } else {
         toast.error("❌ No IPFS hash found for the collection JSON");
       }
