@@ -62,10 +62,9 @@ const CollectionPage = () => {
   }, []);
 
   const uploadToIpfs = async () => {
-    const loadingToast = toast.loading("🔥Uploading to IPFS");
-
     try {
       let jsonDir = await makeRequest("/api/ipfs", "POST", {});
+      toast.loading("🔥Uploading to IPFS");
       console.log(jsonDir, "what is the hash of the JSON directory? ");
       toast.dismiss(loadingToast);
 
@@ -85,7 +84,7 @@ const CollectionPage = () => {
   };
 
   const deploySm = async (jsonDir) => {
-    // to create and deploy contract
+    let contractDetails = await makeRequest("/api/create-contract", "POST");
     // to deploy contract
     setContractDetails(contractDetails);
   };
