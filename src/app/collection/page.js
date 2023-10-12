@@ -65,7 +65,10 @@ const CollectionPage = () => {
     try {
       let jsonDir = await makeRequest("/api/ipfs", "POST", {});
       toast.loading("🔥Uploading to IPFS");
-      console.log(jsonDir, "what is the hash of the JSON directory? ");
+      console.log(
+        jsonDir,
+        "what is the hash of the JSON directory? 🐲🐲🐲🐲🐲🐲🐲🐲🐲"
+      );
       toast.dismiss(loadingToast);
 
       if (jsonDir) {

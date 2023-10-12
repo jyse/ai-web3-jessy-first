@@ -34,7 +34,7 @@ const uploadImgsToIpfs = async () => {
     console.log(ipfsNFTDir, "👀 what wordt hier terug gegeven");
     return ipfsNFTDir.IpfsHash;
   } catch (error) {
-    console.log("Error uploading images to IPFS");
+    console.log("👹✨Error uploading images to IPFS");
   }
 };
 
@@ -98,7 +98,7 @@ const uploadJSONtoIpfs = async (imgHash) => {
 
     return jsonDirDetails.IpfsHash;
   } catch (error) {
-    console.log("Error reading/updating JSON file");
+    console.log("👹✨Error reading/updating JSON file");
   }
 };
 

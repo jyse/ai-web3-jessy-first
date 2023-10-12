@@ -3,8 +3,6 @@ import { ethers } from "hardhat";
 import toast, { Toaster } from "react-hot-toast";
 
 export async function deployContract() {
-  const toaster = <Toaster position="top-center" />;
-
   try {
     await task("compile", "Compile contracts").setAction(async () => {
       console.log("💻 Compiling smart contract");
@@ -19,15 +17,8 @@ export async function deployContract() {
     const genNFTContract = await Contract.deploy();
     await genNFTContract.deployed();
 
-    // toast.success(
-    //   `🥳🥳✨ Contract successfully deployed!! ${genNFTContract.address} 📝`,
-    //   {
-    //     duration: 5000
-    //   }
-    // );
-
-    console.log("Contract deployed to", genNFTContract.address);
-    console.log("Abi of contract: ", contractArtifacts.abi);
+    console.log("🐲🐲🐲🐲🐲🐲🐲Contract deployed to", genNFTContract.address);
+    console.log("🐲🐲🐲🐲🐲🐲🐲Abi of contract: ", contractArtifacts.abi);
 
     const response = JSON.stringify({
       contractAddress: genNFTContract.address,

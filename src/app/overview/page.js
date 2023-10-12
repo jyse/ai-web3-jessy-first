@@ -29,7 +29,7 @@ const stylesPrompt = [
   { name: "Art", path: "/spImgs/art/", route: "/art" }
 ];
 
-const spStyle = () => {
+const spStyle = (chosenStyle) => {
   console.log("🤖🖌️ You choose the style of", chosenStyle);
 };
 

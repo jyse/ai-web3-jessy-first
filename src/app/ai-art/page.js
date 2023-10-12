@@ -58,14 +58,13 @@ const AIArtPage = () => {
     const imageFilePaths = await makeRequest("/api/images", "POST", { prompt });
     setGenImgFPs(imageFilePaths);
 
-    console.log("🤖🎨 The generated images have been written!");
+    console.log("🤖🎨 The generated images are saved!");
     toast.dismiss();
     toast.success("🔥Images succesfully generated!", {
       duration: 8000
     });
 
     const genJSONImgs = await makeRequest("/api/gen-json");
-    console.log("🚀📝Getting JSON data");
     setGenJSON(genJSONImgs.data.reverse());
   }
 
